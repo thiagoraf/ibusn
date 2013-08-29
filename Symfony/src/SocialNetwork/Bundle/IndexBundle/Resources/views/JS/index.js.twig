@@ -17,10 +17,14 @@ oIndex.prototype.load = function(){
     * EX: Profile/thiago
     * */
      if ( _this.data ) {
-        var data = _this.data.split("/");
+        var data = _this.data.indexOf("/") != -1 ? _this.data.split("/") : [_this.data];
         if ( data[0] == 'profile' ) {
             API.getJS( "Profile.profile" , function() {
                 _this.profile = new oProfile( _this.container, data[1] );
+            });
+        } else if ( data[0] == 'friend' ) {
+            API.getJS( "Friend.friend" , function() {
+                _this.profile = new oProfile( _this.container );
             });
         }
 

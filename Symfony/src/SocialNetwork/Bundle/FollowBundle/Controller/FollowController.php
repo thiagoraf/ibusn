@@ -20,7 +20,7 @@ class FollowController extends Controller
             }
             $oFollow = $dbService->getRepository('SocialNetwork\Bundle\FollowBundle\Entity\Follow')->findOneby( array('following' => $me['id'], 'followed' => $params['userId']) );
             if ( $oFollow && $oFollow->getId() ) {
-                return $response->setData(array("error"=>""))->render();
+                return $response->setData(array("error"=>"Você já seguiu este usuário!"))->render();
             }
 
             $oFollowing = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
@@ -51,10 +51,10 @@ class FollowController extends Controller
             $dbService->remove( $oFollow );
             $dbService->flush();
 
-            return $response->render();
         }catch(Exception $e){
-
+            $response->setData(array("error"=>$e->getMessage()));
         }
+        return $response->render();
     }
 
     public function followingAction(){

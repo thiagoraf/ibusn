@@ -1,3 +1,9 @@
+social_network_friend_my_friends:
+    pattern:  /my
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:myFriend }
+    requirements:
+            _method:  GET
+
 social_network_friend_add:
     pattern:  /friend
     defaults: { _controller: SocialNetworkFriendBundle:Friend:add }

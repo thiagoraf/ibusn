@@ -11,9 +11,10 @@ class FriendController extends Controller
     /*
      * TODO: FAZER TODAS AS VALIDAÇÕES NECESSÁRIAS
      * */
-    public function indexAction($name)
+
+    public function myFriendAction()
     {
-        return $this->render('SocialNetworkFriendBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('SocialNetworkIndexBundle:Default:index.html.twig', array("data" => "friend"));
     }
 
     public function addAction(){
