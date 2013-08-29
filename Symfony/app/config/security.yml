@@ -1,0 +1,48 @@
+security:
+    encoders:
+#        Symfony\Component\Security\Core\User\User: plaintext
+        SocialNetwork\API\OM\User:
+            algorithm: md5
+            encode-as-base64: false
+            iterations: 0
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        userProvider:
+            id: Auth.UserProvider
+#        administrators:
+#            entity: { class: SocialNetwork\API\Entity\User, property: uid }
+#        in_memory:
+#            memory:
+#                users:
+#                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: adminpass, name: Thiago Rossetto Afonso, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            security: false
+
+        secured_area:
+            pattern: ^/
+            form_login:
+                check_path: _login_check
+                login_path: _login
+                provider: userProvider
+            logout:
+                path:   _logout
+                target: _login
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        #- { path: ^/, roles: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

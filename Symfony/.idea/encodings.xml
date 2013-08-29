@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/HomeBundle/Resources/views/EJS/home.ejs.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/Default/index.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/EJS/navbar.ejs.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/EJS/sidebar.ejs.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/LoginBundle/Resources/views/Login/index.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig" charset="UTF-8" />
+  </component>
+</project>
+

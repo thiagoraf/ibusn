@@ -1,0 +1,20 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: '123'
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 44b32fb6131d7448ea5002457dd00f3becc41e30
+    database_path: null
+    provider_user_class: SocialNetwork\API\Provider\DbUserProvider
+    provider_user_map: { id: uidNumber, name: cn, password: userpassword, gn: givenname }
+    provider_role_class: SocialNetwork\API\Provider\DbRoleProvider
+    provider_role_map: { id: gidNumber, name: cn, members: memberUid }
+    provider_group_class: SocialNetwork\API\Provider\DbGroupProvider
+    provider_group_map: { id: gidNumber, name: cn, members: memberUid }
