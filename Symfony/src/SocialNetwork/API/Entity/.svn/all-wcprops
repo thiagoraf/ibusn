@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn-expresso/!svn/ver/2976/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity
+END
+RoleMember.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/RoleMember.php
+END
+Group.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/Group.php
+END
+ID.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn-expresso/!svn/ver/2976/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/ID.php
+END
+User.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/User.php
+END
+Role.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/Role.php
+END
+GroupMember.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/GroupMember.php
+END
+Module.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn-expresso/!svn/ver/2717/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Entity/Module.php
+END

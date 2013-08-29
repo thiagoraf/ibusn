@@ -1,0 +1,65 @@
+oProfile = function( container, data ){
+    this.data = data;
+    this.container = container;
+
+    this.load();
+}
+
+oProfile.prototype.load = function(){
+    var _this = this;
+
+    var data = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
+    _this.userProfileId = data.id;
+
+    if ( data && $.isEmptyObject(data) ) {
+        _this.container.html( API.render('Profile.notFound') );
+        return false;
+    }
+
+    _this.container.html( API.render('Profile.profile', data) );
+
+    _this.container.find('#profile-feed-1').slimScroll({
+        height: '250px',
+        alwaysVisible : true
+    });
+
+    _this.container.find('.add-as-friend').click(function(){
+
+        var result = API.POST("Friend/friend", {"userId" : _this.userProfileId});
+
+        if ( API.hasError(result) ) {
+            //TODO: Informar o erro!
+            return false;
+        }
+        // TODO: Informar sucesso ao adicionar o usuário
+    });
+
+    _this.container.find('.follow-this-person').click(function(){
+
+        var result = API.POST("Follow/follow", {"userId" : _this.userProfileId});
+
+        if ( API.hasError(result) ) {
+            //TODO: Informar o erro!
+            return false;
+        }
+        // TODO: Informar sucesso ao seguir o usuário
+        $(this).removeClass("follow-this-person").addClass("unfollow-this-person");
+        $(this).find("span").text("Deixar de seguir esta pessoa");
+    });
+
+    _this.container.find('.unfollow-this-person').click(function(){
+
+        var result = API.DELETE("Follow/unfollow/"+ _this.userProfileId);
+
+        if ( API.hasError(result) ) {
+            //TODO: Informar o erro!
+            return false;
+        }
+
+        $(this).removeClass("unfollow-this-person").addClass("follow-this-person");
+        $(this).find("span").text("Seguir esta pessoa");
+    });
+
+
+
+}

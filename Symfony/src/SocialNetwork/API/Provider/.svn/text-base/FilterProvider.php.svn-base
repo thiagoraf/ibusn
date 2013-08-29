@@ -1,0 +1,213 @@
+<?php
+
+namespace Prognus\API\Provider;
+use Prognus\API\Provider\Criteria;
+
+/**
+ * Class FilterProvider
+ * @package Prognus\API\Provider
+ */
+class FilterProvider
+{
+    /**
+     * @var array
+     */
+    private  $stack;
+    /**
+     * @var array
+     */
+    private  $map;
+
+    /**
+     * @param Criteria $criteria
+     * @param array $map
+     */
+    public function __construct( Criteria $criteria ,  array $map = array())
+   {
+       $this->stack = $criteria->getStack();
+       $this->map = $map;
+   }
+
+    /**
+     * Return mapped value
+     *
+     * @param $value
+     * @return mixed
+     */
+    private function map( $value )
+   {
+       return isset($this->map[$value]) ? $this->map[$value] : $value;
+   }
+
+    /**
+     * Return filter
+     * Ldap Format
+     *
+     * @return string
+     */
+    public function formatLDAP( )
+   {
+       $return = '(&';
+       foreach( $this->stack as $value)
+       {
+           switch( $value[0] )
+           {
+               case '=':
+                   $return .= '('. $this->map($value[1]) .'='. $this->ldap_escape($value[2]) .')';
+                   break;
+               case '!=':
+                   $return .= '(!'. $this->map($value[1]) .'='. $this->ldap_escape($value[2]) .')';
+                   break;
+               case '*':
+                   $return .= '('. $this->map($value[1]) .'=*'. $this->ldap_escape($value[2]) .'*)';
+                   break;
+               case '^':
+                   $return .= '('. $this->map($value[1]) .'=*'. $this->ldap_escape($value[2]) .')';
+                   break;
+               case '$':
+                   $return .= '('. $this->map($value[1]) .'='. $this->ldap_escape($value[2]) .'*)';
+                   break;
+               case '>':
+                   $return .= '('. $this->map($value[1]) .'>'. $this->ldap_escape($value[2]) .')';
+                   break;
+               case '<':
+                   $return .= '('. $this->map($value[1]) .'<'. $this->ldap_escape($value[2]) .')';
+                   break;
+               case 'or':
+                   $orF = new FilterProvider($value[1] , $this->map );
+                   $return = '(|'. $return .')'. $orF->formatLDAP() ;
+                   break;
+               case 'and':
+                   $andF = new FilterProvider($value[1] , $this->map );
+                   $return = '(&'. $return .')'. $andF->formatLDAP() ;
+                   break;
+               case 'in':
+                   $return .= '(|';
+                   foreach($value[2] as $vv)
+                       $return .= '('. $this->map($value[1]) .'='. $this->ldap_escape($vv) .')';
+                   $return .= ')';
+                   break;
+            }
+       }
+       $return =  $return .')';
+
+       return $return;
+   }
+
+    /**
+     * Return filter
+     * DQL format
+     *s
+     * @param string $prefix Dql table prefix
+     * @return array
+     */
+    public function formatDQL( $prefix  )
+    {
+        $dql = '(' ;
+        $parameters = array();
+
+
+        foreach( $this->stack as $i =>  $value)
+        {
+            $dql.= ( $i > 0  && $value[0] != 'or' && $value[0] != 'and') ? ' AND' : ' ';
+
+            switch( $value[0] )
+            {
+                case '=':
+                    $dql .= $prefix.'.'.$value[1] .' = :'. $value[1] .' ';
+                    $parameters[$value[1]] = $value[2];
+                    break;
+                case '!=':
+                    $dql .= $prefix.'.'.$value[1] .' != :'. $value[1] .' ';
+                    $parameters[$value[1]] = $value[2];
+                    break;
+                case '*':
+                    $dql .= $prefix.'.'.$value[1] .' LIKE :'. $value[1] .' ';
+                    $parameters[$value[1]] = '%'.$value[2].'%';
+                    break;
+                case '^':
+                    $dql .= $prefix.'.'.$value[1] .' LIKE :'. $value[1] .' ';
+                    $parameters[$value[1]] = '%'.$value[2];
+                    break;
+                case '$':
+                    $dql .= $prefix.'.'.$value[1] .' LIKE :'. $value[1] .' ';
+                    $parameters[$value[1]] = $value[2].'%';
+                    break;
+                case '>':
+                    $dql .= $prefix.'.'.$value[1] .' > :'. $value[1] .' ';
+                    $parameters[$value[1]] = $value[2];
+                    break;
+                case '<':
+                    $dql .= $prefix.'.'.$value[1] .' < :'. $value[1] .' ';
+                    $parameters[$value[1]] = $value[2];
+                    break;
+                case 'or':
+                    $orF = new FilterProvider($value[1] );
+                    $tmp = $orF->formatDQL($prefix );
+                    $parameters = array_merge($parameters, $tmp['parameters']);
+                    $dql = '('. $dql .') OR '. $tmp['dql'] ;
+                    break;
+                case 'and':
+                    $andF = new FilterProvider($value[1] );
+                    $tmp = $andF->formatDQL($prefix );
+                    $parameters = array_merge($parameters, $tmp['parameters']);
+                    $dql = '('. $dql .') AND '. $tmp['dql'] ;
+                    break;
+                case 'in':
+                    $dql .= $prefix.'.'.$value[1] .' IN :'. $value[1] .' ';
+                    $parameters[$value[1]] = implode(',' , $value[2]);
+                    break;
+            }
+        }
+        $dql =   $dql .')'  ;
+
+        return array( 'dql' => $dql , 'parameters' => $parameters);
+    }
+
+    /**
+     * function ldap_escape
+     * @author Chris Wright
+     * @version 2.0
+     * @param string $subject The subject string
+     * @param bool $dn Treat subject as a DN if TRUE
+     * @param string|array $ignore Set of characters to leave untouched
+     * @return string The escaped string
+     */
+    private function ldap_escape ($subject, $dn = FALSE, $ignore = NULL)
+    {
+
+        // The base array of characters to escape
+        // Flip to keys for easy use of unset()
+        $search = array_flip($dn ? array('\\', ',', '=', '+', '<', '>', ';', '"', '#') : array('\\', '*', '(', ')', "\x00"));
+
+        // Process characters to ignore
+        if (is_array($ignore)) {
+            $ignore = array_values($ignore);
+        }
+        for ($char = 0; isset($ignore[$char]); $char++) {
+            unset($search[$ignore[$char]]);
+        }
+
+        // Flip $search back to values and build $replace array
+        $search = array_keys($search);
+        $replace = array();
+        foreach ($search as $char) {
+            $replace[] = sprintf('\\%02x', ord($char));
+        }
+
+        // Do the main replacement
+        $result = str_replace($search, $replace, $subject);
+
+        // Encode leading/trailing spaces in DN values
+        if ($dn) {
+            if ($result[0] == ' ') {
+                $result = '\\20'.substr($result, 1);
+            }
+            if ($result[strlen($result) - 1] == ' ') {
+                $result = substr($result, 0, -1).'\\20';
+            }
+        }
+
+        return $result;
+    }
+}

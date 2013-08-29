@@ -1,0 +1,92 @@
+oIndex = function( data ){
+    this.data = data;
+    this.container = $("div#content");
+    this.sidebar = $('div#sidebar');
+    this.navbar = $("div#navbar");
+
+    this.load();
+}
+
+oIndex.prototype.load = function(){
+    var _this = this;
+
+
+    /*
+    * TODO: Tentar fazer de maneira diferente!
+    * Essa condição serve para verificar se algo foi informado na URL
+    * EX: Profile/thiago
+    * */
+     if ( _this.data ) {
+        var data = _this.data.split("/");
+        if ( data[0] == 'profile' ) {
+            API.getJS( "Profile.profile" , function() {
+                _this.profile = new oProfile( _this.container, data[1] );
+            });
+        }
+
+    } else {
+        API.getJS( 'Home.home' , function() {
+            _this.home = new oHome( _this.container );
+        });
+    }
+
+   _this.loadNavbar();
+   _this.loadSidebar();
+
+    _this.sidebar.find('#nav-list a.home').click( function(){
+        API.getJS( 'Home.home' , function() {
+            _this.home = new oHome( _this.container );
+        });
+    })
+
+    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function(){
+        location.href = API.dataUrl+"Profile/"+API.me.data.uid;
+    });
+
+
+}
+
+oIndex.prototype.loadNavbar = function() {
+    var _this = this;
+
+    var invites = API.GET("Friend/friend/invite");
+
+
+    _this.navbar.html( API.render('Index.navbar', invites) );
+
+    _this.navbar.find("ul.friend-invite .accept").click(function(){
+
+        var result = API.PUT("Friend/friend/accept", {'inviteId': $(this).parents("li").attr("invite-id")});
+
+        if( API.hasError(result) ) {
+            //TODO: Falar que deu erro..
+            return false;
+        }
+
+        $(this).parents("li").find("span.badge").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        $(this).parents("li").first().remove();
+        _this.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        // TODO: falar de deu tudo certo!
+    });
+    _this.navbar.find("ul.friend-invite .decline").click(function(){
+
+        var result = API.DELETE("Friend/friend/decline/"+$(this).parents("li").attr("invite-id"));
+
+        if( API.hasError(result) ) {
+            //TODO: Falar que deu erro..
+            return false;
+        }
+        $(this).parents("li").find("span.badge").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        $(this).parents("li").first().remove();
+        _this.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        // TODO: falar de deu tudo certo!
+    });
+}
+
+oIndex.prototype.loadSidebar = function() {
+    var _this = this;
+
+    _this.sidebar.html( API.render('Index.sidebar') );
+
+    _this.sidebar.find(".sidebar-shortcuts-large").find("button").tooltip();
+}

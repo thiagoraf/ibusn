@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn-expresso/!svn/ver/2763/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Interfaces
+END
+ISearchProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Interfaces/ISearchProvider.php
+END
+IGroupProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Interfaces/IGroupProvider.php
+END
+IUserProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn-expresso/!svn/ver/2763/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Interfaces/IUserProvider.php
+END
+IRoleProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Interfaces/IRoleProvider.php
+END

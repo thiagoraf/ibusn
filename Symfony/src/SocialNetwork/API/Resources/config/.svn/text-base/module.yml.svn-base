@@ -1,0 +1,13 @@
+name: API
+version: '1.0'
+entity:
+     - \Prognus\API\Entity\User
+     - \Prognus\API\Entity\Group
+     - \Prognus\API\Entity\Role
+     - \Prognus\API\Entity\GroupMember
+     - \Prognus\API\Entity\RoleMember
+     - \Prognus\API\Entity\ID
+     - \Prognus\API\Entity\Module
+
+check_dependency: \Prognus\API\Hook\Dependency
+

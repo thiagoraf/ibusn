@@ -1,0 +1,5 @@
+API_user_me:
+    pattern:  /user/me
+    defaults: { _controller: PrognusAPI:Resources:userMe }
+    requirements:
+            _method:  GET

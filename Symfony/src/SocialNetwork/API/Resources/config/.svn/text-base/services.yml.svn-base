@@ -1,0 +1,93 @@
+parameters:
+    ldap:
+        objectclass:
+            user:
+                person: [commonname, cn, surname, sn, userpassword]
+                inetorgperson: [givenname, gn, rfc822mailbox, mail, userid, uid]
+                organizationalperson: [localityname, l, postalcode, stateorprovincename, st, streetaddress, street, telephonenumber]
+                organization: [organizationname, o]
+                posixaccount: [uidnumber, gidnumber, homedirectory]
+                parceiros: [orgtype, orgparent]
+            group:
+                posixaccount: [uidnumber, gidnumber, homedirectory, qmailUser ]
+            role:
+                posixaccount: [uidnumber, gidnumber, homedirectory]
+        objectclassrequired:
+            user:
+                -   top
+                -   phpgwaccount
+                -   qmailuser
+            group:
+                -   top
+                -   posixgroup
+                -   phpgwaccount
+            role:
+                -   top
+                -   posixgroup
+
+services:
+      Auth.UserProvider:
+          class:  Prognus\API\Authentication\UserProvider
+          arguments: ['@service_container']
+
+      ServiceLdap:
+          class:  Prognus\API\Service\LdapService
+          arguments:
+              config:
+                  host: %ldap_host%
+                  base_dn: %ldap_base_dn%
+                  size_limit: %ldap_size_limit%
+                  version: %ldap_version%
+                  #user_name: ''
+                  #user_pass: ''
+                  admin_name: %ldap_admin_name%
+                  admin_pass: %ldap_admin_pass%
+              filters:
+                  user: %ldap_filter_user%
+                  group: %ldap_filter_group%
+                  role: %ldap_filter_role%
+              context:
+                  user: %ldap_context_user%
+                  group:  %ldap_context_group%
+                  role: %ldap_context_role%
+              IdProvider:
+                  service: '@API.IdProvider'
+                  range_start:
+                      user: %ldap_start_user%
+                      group: %ldap_start_group%
+                      role: %ldap_start_role%
+      ImapService:
+              class:  Prognus\API\Service\ImapService
+              arguments:
+                  config:
+                      host: %imap_host%
+                      port: %imap_port%
+                      TLSEncryption: %imap_tls_encryption%
+                      delimiter: %imap_delimiter%
+                      folders: %imap_folders%
+                  token: @service_container
+      ServiceMemcache:
+          class:  Prognus\API\Service\MemcacheService
+          arguments:
+                expiration: %memcache_expiration%
+                servers: %memcache_hosts%
+
+      API.UserProvider:
+          class:  %provider_user_class%
+          arguments:  ['@service_container', %provider_user_map%]
+
+      API.RoleProvider:
+          class:  %provider_role_class%
+          arguments: ['@service_container' , %provider_role_map%]
+
+      API.GroupProvider:
+          class:  %provider_group_class%
+          arguments: ['@service_container' , %provider_group_map%]
+
+      API.IdProvider:
+          class:  Prognus\API\Provider\IdProvider
+          arguments: ['@service_container' ]
+
+      API.SearchProvider:
+          class:  Prognus\API\Provider\MCSearchProvider
+          arguments: ['@service_container' ]

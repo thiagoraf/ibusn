@@ -1,0 +1,333 @@
+<?php
+
+namespace Prognus\API\Provider;
+
+use Prognus\API\Interfaces\IGroupProvider,
+    Prognus\API\Entity\Group,
+    Prognus\API\Entity\GroupMember,
+    Prognus\API\Helper\AttributeMap as MAP;
+
+/**
+ * Class DbGroupProvider
+ * @package Prognus\API\Provider
+ */
+class DbGroupProvider implements IGroupProvider{
+
+    protected $dbService, $logger;
+
+    /**
+     * @param $container Symfony service container
+     * @param array $map Map of default attributes
+     */
+    public function __construct($container, $map)
+    {
+        $this->logger = $container->get('logger');
+        $this->dbService = $container->get('doctrine.orm.entity_manager');
+    }
+
+    /**
+     * Create a new group
+     *
+     * @param $uid Uid to group
+     * @param $name Name to group
+     * @param $description Description to group
+     * @param array $members Uid of the users to the group
+     * @param array $attributes Custom attributes to group
+     * @return bool|int
+     */
+    public function create( $uid , $name , $description, array $members = array(), array $attributes = array())
+    {
+        $group = new Group();
+
+        $group->setName( $name );
+        $group->setDescription( $description );
+        $group->setUid( $uid );
+
+        foreach($attributes as $key => $val)
+        {
+            $group->set{ ucfirst($key) }( $val );
+        }
+
+        $this->dbService->persist( $group );
+
+        foreach($members as $member)
+        {
+            $groupMember = new GroupMember();
+            $groupMember->setMemberUid( $member );
+            $groupMember->setGroupUid( $group->getUid() );
+            $this->dbService->persist( $groupMember );
+        }
+
+        $this->dbService->flush();
+
+        if( !$group->getId() )
+        {
+            $this->logger->err( 'Error in create group' );
+            return false;
+        }
+
+        return $group->getId();
+    }
+
+    /**
+     * Update exist group
+     *
+     * @param $id Id of group
+     * @param $uid Uid of group
+     * @param $name New name to group
+     * @param $description New Description to group
+     * @param array $members UID of the users to the group
+     * @param array $attributes Custom attributes
+     * @return bool
+     */
+    public function update($id, $uid , $name, $description, array $members = array(), array $attributes = array())
+    {
+        $group = $this->dbService->find('Prognus\API\Entity\Group', $id);
+
+        $group->setName( $name );
+        $group->setDescription( $description );
+        $group->setUid( $uid );
+
+        foreach($attributes as $key => $val)
+        {
+            $group->set{ ucfirst($key) }( $val );
+        }
+
+        $this->dbService->merge( $group );
+
+        $this->dbService->createQueryBuilder()
+            ->delete('Prognus\API\Entity\GroupMember', 'gm')
+            ->where('gm.groupUid = ?1')
+            ->setParameter(1 , $id )
+            ->getQuery()
+            ->getResult();
+
+        foreach($members as $member)
+        {
+            $groupMember = new GroupMember();
+            $groupMember->setMemberUid( $member );
+            $groupMember->setGroupUid( $group->getUid() );
+            $this->dbService->persist( $groupMember );
+        }
+
+        $this->dbService->flush();
+
+        if( !$group->getId() )
+        {
+            $this->logger->info( sprintf('Error in update group %u', $id) );
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Read Group
+     *
+     * @param $id Id of group
+     * @param array $attributes Attributes to return
+     * @return array
+     * @throws \Exception
+     */
+    public function get($id, $attributes = array())
+    {
+        $group = $this->dbService->createQueryBuilder()
+            ->select( MAP::mapDbAttributes('g', $attributes)  )
+            ->from('Prognus\API\Entity\Group', 'g')
+            ->where('g.id = ?1')
+            ->setParameter(1 , $id )
+            ->getQuery()
+            ->getArrayResult();
+
+        if( empty( $group ) )
+        {
+            $this->logger->info( sprintf('Group not found %u', $id ));
+            return false;
+        }
+
+        return $group[0];
+    }
+
+
+    /**
+     * Read Group
+     *
+     * @param $uid uid of group
+     * @param array $attributes Attributes to return
+     * @return array
+     * @throws \Exception
+     */
+    public function getByUid($uid, Array $attributes = array())
+    {
+        $group = $this->dbService->createQueryBuilder()
+            ->select( MAP::mapDbAttributes('g', $attributes)  )
+            ->from('Prognus\API\Entity\Group', 'g')
+            ->where('g.uid = ?1')
+            ->setParameter(1 , $uid )
+            ->getQuery()
+            ->getArrayResult();
+
+        if( empty( $group ) )
+        {
+            $this->logger->info( sprintf('Group not found %u', $uid ));
+            return false;
+        }
+
+        return $group[0];
+    }
+
+    /**
+     * Find Groups
+     *
+     * @param Criteria $criteria Criteria filter
+     * @param array $attributes  Attributes to return
+     * @return mixed
+     */
+    public function find(Criteria $criteria , array $attributes = array())
+    {
+        $fp = new FilterProvider( $criteria );
+        $fpr = $fp->formatDQL('g');
+
+        $result = $this->dbService->createQueryBuilder()
+            ->select( MAP::mapDbAttributes('g' , $attributes)  )
+            ->from('Prognus\API\Entity\Group', 'g')
+            ->where($fpr['dql'])
+            ->setParameters($fpr['parameters'] )
+            ->getQuery()
+            ->getArrayResult();
+
+        if( empty( $result ) )
+        {
+            $this->logger->info('Group without result');
+            return false;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Delete Group
+     *
+     * @param $id Id of group
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete( $id )
+    {
+        $group = $this->dbService->find('Prognus\API\Entity\Group', $id);
+
+        if( $group )
+        {
+            $this->dbService->remove( $group );
+
+            $this->dbService->createQueryBuilder()
+                ->delete('Prognus\API\Entity\GroupMember', 'gm' )
+                ->where('gm.groupUid = ?1')
+                ->setParameter(1 , $id )
+                ->getQuery()
+                ->execute();
+
+            $this->dbService->flush();
+
+            if( $group->getId() )
+            {
+                $this->logger->info( sprintf('Error in remove group %u', $id ));
+                return false;
+            }
+
+            return true;
+        }else
+        {
+            $this->logger->info( sprintf('Group not found %s', $uid ));
+            return false;
+        }
+    }
+
+    /**
+     * Add user in group
+     *
+     * @param $user User uid
+     * @param $group Group uid
+     * @return bool
+     * @throws \Exception
+     */
+    public function setUserGroup($user, $group)
+    {
+        $groupMember = $this->dbService->createQueryBuilder()
+            ->select( 'gm' )
+            ->from('Prognus\API\Entity\GroupMember', 'gm' )
+            ->where('gm.memberUid = ?1')
+            ->andWhere('gm.groupUid = ?2')
+            ->setParameter(1 , $user )
+            ->setParameter(2 , $group )
+            ->getQuery()
+            ->getArrayResult();
+
+        if( empty( $groupMember ) )
+        {
+            $groupMember = new GroupMember();
+            $groupMember->setMemberUid( $user );
+            $groupMember->setGroupUid( $group );
+
+            $this->dbService->persist( $groupMember );
+            $this->dbService->flush();
+
+            if( !$groupMember->getId())
+            {
+                $this->logger->info( sprintf('Error in add user member %s', $user ));
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Return all groups of the user
+     *
+     * @param $user User uid
+     * @param array $attributes  Attributes to return
+     * @return array
+     */
+    public function getUserGroups($user , array $attributes = array())
+    {
+        $result = $this->dbService->createQueryBuilder()
+            ->select( MAP::mapDbAttributes('g' , $attributes) )
+            ->from('Prognus\API\Entity\Group', 'g')
+            ->join('Prognus\API\Entity\GroupMember', 'gm', 'WITH', "gm.groupUid = g.uid")
+            ->where('gm.memberUid = ?1')
+            ->setParameter(1 , $user )
+            ->getQuery()
+            ->getArrayResult();
+
+        if( empty( $result ) )
+        {
+            $this->logger->info( sprintf('User group not found %s', $user ));
+            return array();
+        }
+
+        return $result;
+    }
+
+    /**
+     * Remove user of group
+     *
+     * @param $user User uid
+     * @param $group Group uid
+     * @return bool
+     */
+    public function deleteUserGroup($user, $group)
+    {
+        $result = $this->dbService->createQueryBuilder()
+            ->delete('Prognus\API\Entity\GroupMember', 'gm' )
+            ->where('gm.memberUid = ?1')
+            ->andWhere('gm.groupUid = ?2')
+            ->setParameter(1 , $user )
+            ->setParameter(2 , $group )
+            ->getQuery()
+            ->execute() > 0 ? true : false;
+
+        if( !$result ) $this->logger->info( sprintf('Error in remove user group %s', $user ));
+        return $result;
+    }
+}

@@ -1,0 +1,101 @@
+10
+
+dir
+3077
+https://dev.prognus.com.br/svn-expresso/workflow/novoparceiros/trunk/symfony/src/Prognus/API
+https://dev.prognus.com.br/svn-expresso
+
+
+
+2013-08-08T19:24:43.590212Z
+3061
+cristiano
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+eead6a66-2f45-41ea-9738-7864de97ddaf
+
+Authentication
+dir
+
+Helper
+dir
+
+Hook
+dir
+
+Service
+dir
+
+DependencyInjection
+dir
+
+Tests
+dir
+
+Controller
+dir
+
+Interfaces
+dir
+
+Provider
+dir
+
+Resources
+dir
+
+OM
+dir
+
+Entity
+dir
+
+PrognusAPI.php
+file
+
+
+
+
+2013-08-08T20:34:57.000000Z
+6b26d891c7bfba5bd787c2aa0e3fa75c
+2013-05-15T13:39:46.324096Z
+2646
+acoutinho
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+177
+
+Response
+dir
+

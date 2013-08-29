@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn-expresso/!svn/ver/2887/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider
+END
+LdapUserProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn-expresso/!svn/ver/2884/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/LdapUserProvider.php
+END
+DbGroupProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/DbGroupProvider.php
+END
+LdapRoleProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn-expresso/!svn/ver/2887/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/LdapRoleProvider.php
+END
+DbUserProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn-expresso/!svn/ver/2763/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/DbUserProvider.php
+END
+FilterProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/FilterProvider.php
+END
+MCSearchProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/MCSearchProvider.php
+END
+Criteria.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/Criteria.php
+END
+DbRoleProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/DbRoleProvider.php
+END
+IdProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn-expresso/!svn/ver/2646/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/IdProvider.php
+END
+LdapGroupProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn-expresso/!svn/ver/2864/workflow/novoparceiros/trunk/symfony/src/Prognus/API/Provider/LdapGroupProvider.php
+END

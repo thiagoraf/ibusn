@@ -1,0 +1,16 @@
+#_social_network_login:
+#    pattern:  /login
+#    defaults: { _controller: SocialNetworkLoginBundle:Login:index }
+#
+#_security_login_check:
+#    pattern:  /login_check
+
+_login:
+    pattern:   /login
+    defaults:  { _controller: SocialNetworkLoginBundle:Login:index }
+
+_login_check:
+    pattern:   /login_check
+
+_logout:
+    pattern:  /logout

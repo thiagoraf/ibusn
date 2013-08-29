@@ -1,0 +1,23 @@
+social_network_friend_add:
+    pattern:  /friend
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:add }
+    requirements:
+        _method:  POST
+
+social_network_friend_invite:
+    pattern:  /friend/invite
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:friendInvite }
+    requirements:
+        _method:  GET
+
+social_network_friend_accept:
+    pattern:  /friend/accept
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:acceptFriend }
+    requirements:
+        _method:  PUT
+
+social_network_friend_decline:
+    pattern:  /friend/decline/{invite}
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:declineFriend }
+    requirements:
+        _method:  DELETE

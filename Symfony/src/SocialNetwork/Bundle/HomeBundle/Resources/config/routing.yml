@@ -1,0 +1,11 @@
+social_network_send_message_chat:
+    pattern:  /chat
+    defaults: { _controller: SocialNetworkHomeBundle:Chat:post }
+    requirements:
+        _method:  POST
+
+social_network_list_chat:
+    pattern:  /chat
+    defaults: { _controller: SocialNetworkHomeBundle:Chat:list }
+    requirements:
+        _method:  GET

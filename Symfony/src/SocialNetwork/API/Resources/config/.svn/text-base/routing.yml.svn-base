@@ -1,0 +1,11 @@
+PrognusAPI_JS:
+    pattern:  /js/{js}
+    defaults: { _controller: PrognusAPI:Resources:getJS }
+    requirements:
+            _method:  GET
+
+PrognusAPI_EJS:
+    pattern:  /ejs/{ejs}
+    defaults: { _controller: PrognusAPI:Resources:getEJS }
+    requirements:
+            _method:  GET

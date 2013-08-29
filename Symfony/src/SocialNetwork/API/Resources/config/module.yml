@@ -1,0 +1,13 @@
+name: API
+version: '1.0'
+entity:
+     - \SocialNetwork\API\Entity\User
+     - \SocialNetwork\API\Entity\Group
+     - \SocialNetwork\API\Entity\Role
+     - \SocialNetwork\API\Entity\GroupMember
+     - \SocialNetwork\API\Entity\RoleMember
+     - \SocialNetwork\API\Entity\ID
+     - \SocialNetwork\API\Entity\Module
+
+check_dependency: \SocialNetwork\API\Hook\Dependency
+

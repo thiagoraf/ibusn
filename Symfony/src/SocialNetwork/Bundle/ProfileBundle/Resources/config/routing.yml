@@ -1,0 +1,11 @@
+social_network_profile_index:
+    pattern:  /{uid}
+    defaults: { _controller: SocialNetworkProfileBundle:Profile:index }
+    requirements:
+            _method:  GET
+
+social_network_profile:
+    pattern:  /profile/{uid}
+    defaults: { _controller: SocialNetworkProfileBundle:Profile:user }
+    requirements:
+            _method:  GET

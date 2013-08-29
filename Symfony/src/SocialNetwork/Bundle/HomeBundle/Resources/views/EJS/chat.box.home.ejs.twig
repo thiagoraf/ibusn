@@ -1,0 +1,29 @@
+<%
+var messages = data;
+$.each(messages, function(i, message){
+%>
+    <div class="itemdiv dialogdiv">
+        <div class="user">
+            <img alt="Alexa's Avatar" src="assets/avatars/avatar1.png" />
+        </div>
+
+        <div class="body">
+            <div class="time">
+                <i class="icon-time"></i>
+                <span class="green">4 sec</span>
+            </div>
+
+            <div class="name">
+                <a href="#"><%= message.name %></a>
+            </div>
+            <div class="text"><%= message.message %></div>
+
+            <div class="tools">
+                <a href="#" class="btn btn-minier btn-info">
+                    <i class="icon-only icon-share-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+<% }) %>
+

@@ -1,0 +1,133 @@
+<?php
+
+namespace Prognus\API\Interfaces;
+
+use Prognus\API\Provider\Criteria;
+
+/**
+ * Interface IRoleProvider
+ * @package Prognus\API\Interfaces
+ */
+interface IRoleProvider
+{
+    /**
+     * @param $container Symfony service container
+     * @param array $map Map of default attributes
+     */
+    public function __construct( $container , $map );
+
+    /**
+     * Create new Role
+     *
+     * @param $uid Uid to role
+     * @param $name Name to role
+     * @param $description Description to role
+     * @param array $members Uid of the users to the role
+     * @param array $attributes  Custom attributes to group
+     * @return bool|int
+     */
+    public function create( $uid , $name  , $description , array $members = array() , array $attributes = array());
+
+    /**
+     * Update exist Role
+     *
+     * @param $id Id of Role
+     * @param $uid Uid to role
+     * @param $name New name to Role
+     * @param $description New description to Role
+     * @param array $members UID of the users to the group
+     * @param array $attributes Custom attributes
+     * @return bool
+     */
+    public function update( $id , $uid , $name  , $description , array $members = array() , array $attributes = array());
+
+    /**
+     * Read Role
+     *
+     * @param $id Id of Role
+     * @param array $attributes Attributes to return
+     * @return array
+     */
+    public function get( $id , Array $attributes = array());
+
+    /**
+     * Read Role
+     *
+     * @param $uid Uid to role
+     * @param array $attributes Attributes to return
+     * @return array
+     */
+    public function getByUid( $uid , Array $attributes = array());
+
+    /**
+     * Find Role
+     *
+     * @param Criteria $criteria Criteria filter
+     * @param array $attributes Attributes to return
+     * @return array
+     */
+    public function find( Criteria $criteria, Array $attributes = array() );
+
+    /**
+     * Delete Role
+     *
+     * @param $id Id of Role
+     * @return bool
+     */
+    public function delete( $id );
+
+    /**
+     * Add role to User
+     *
+     * @param $user User Uid
+     * @param $role Role Uid
+     * @return bool
+     */
+    public function setUserRole($user , $role);
+
+    /**
+     * Add role to Group
+     *
+     * @param $group Group Uid
+     * @param $role Role Uid
+     * @return bool
+     */
+    public function setGroupRole($group , $role);
+
+    /**
+     * Return all Roles of the user
+     *
+     * @param $user User uid
+     * @param array $attributes Attributes to return
+     * @param bool $groupRoles Return the roles of groups inserted in users
+     * @return array
+     */
+    public function getUserRoles($user , array $attributes = array() , $groupRoles = true);
+
+    /**
+     * Return all Roles of the group
+     *
+     * @param $group User uid
+     * @param array $attributes Attributes to return
+     * @return array
+     */
+    public function getGroupRoles($group , array $attributes = array() );
+
+    /**
+     * Remove user of role
+     *
+     * @param $user User uid
+     * @param $role Role Uid
+     * @return bool
+     */
+    public function deleteUserRole( $user , $role );
+
+    /**
+     * Remove user of role
+     *
+     * @param $group Group uid
+     * @param $role Role Uid
+     * @return bool
+     */
+    public function deleteGroupRole( $group , $role );
+}

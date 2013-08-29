@@ -1,0 +1,35 @@
+oHome = function( container ){
+    this.container = container;
+
+    this.load();
+}
+
+oHome.prototype.load = function() {
+    var _this = this;
+    _this.container.html( API.render('Home.home') );
+
+    _this.chat();
+
+    _this.container.find('.dialogs,.comments').slimScroll({
+        height: '300px'
+    });
+}
+
+oHome.prototype.chat = function() {
+    var _this = this;
+
+    var chat = _this.container.find('.chat-box-home');
+    chat.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
+
+    chat.find(".send-message-chat").click(function(){
+        var form = API.form( chat.find("form[name=form-send-message]") );
+        var result = API.POST( 'Home/chat', form);
+
+        if ( API.hasError(result) ) {
+            // TODO: informar o erro com o balãozinho de erro!
+            return false;
+        }
+        chat.find("input[name=message]").val("");
+        chat.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
+    });
+}

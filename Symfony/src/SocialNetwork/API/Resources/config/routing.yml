@@ -1,0 +1,16 @@
+SocialNetworkAPI_JS:
+    pattern:  /js/{js}
+    defaults: { _controller: SocialNetworkAPI:Resources:getJS }
+    requirements:
+            _method:  GET
+
+SocialNetworkAPI_EJS:
+    pattern:  /ejs/{ejs}
+    defaults: { _controller: SocialNetworkAPI:Resources:getEJS }
+    requirements:
+            _method:  GET
+API_user_me:
+    pattern:  /user/me
+    defaults: { _controller: SocialNetworkAPI:Resources:userMe }
+    requirements:
+            _method:  GET

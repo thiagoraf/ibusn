@@ -1,0 +1,82 @@
+<?php
+
+namespace Prognus\API\Provider;
+
+use Prognus\API\Entity\ID;
+
+
+/**
+ * Class IdProvider
+ *
+ * @package Prognus\API\Provider
+ */
+class IdProvider
+{
+    var $db;
+
+    /**
+     * @param $container Symfony service container
+     */
+    public function __construct( $container )
+    {
+        $this->db = $container->get('doctrine.orm.entity_manager');
+    }
+
+    /**
+     * Generate next id for key
+     *
+     * @param $key key identify
+     * @param int $start Start id if key does not exist in base
+     * @return bool
+     */
+    public function generate( $key , $start = 1 )
+    {
+        $ID = $this->db->createQueryBuilder()
+            ->select( 'i' )
+            ->from( 'Prognus\API\Entity\ID' , 'i' )
+            ->where( 'i.name = ?1' )
+            ->setParameter( 1 , $key )
+            ->getQuery()
+            ->getResult();
+
+        return ( empty($ID) ) ?  $this->createKey( $key , $start ) : $this->updateKey($ID[0]);
+    }
+
+    /**
+     * Update key in base
+     *
+     * @param $ID
+     * @return mixed
+     */
+    private function updateKey( $ID )
+    {
+        $position = $ID->getPosition();
+        $position ++;
+
+        $ID->setPosition( $position );
+        $this->db->merge($ID);
+        $this->db->flush();
+
+        return $position;
+    }
+
+    /**
+     * Create Key in base
+     *
+     * @param $key
+     * @param $start
+     * @return bool
+     */
+    private function createKey( $key , $start )
+    {
+        $id = new ID();
+        $id->setName( $key );
+        $id->setPosition( $start );
+
+        $this->db->persist($id);
+        $this->db->flush();
+
+        return $id->getId() ? $start : false;
+    }
+
+}

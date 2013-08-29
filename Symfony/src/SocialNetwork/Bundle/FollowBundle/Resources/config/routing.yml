@@ -1,0 +1,11 @@
+social_network_follow:
+    pattern:  /follow
+    defaults: { _controller: SocialNetworkFollowBundle:Follow:follow }
+    requirements:
+        _method:  POST
+
+social_network_unfollow:
+    pattern:  /unfollow/{userId}
+    defaults: { _controller: SocialNetworkFollowBundle:Follow:unfollow }
+    requirements:
+        _method:  DELETE

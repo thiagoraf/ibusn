@@ -1,0 +1,11 @@
+oLogin = function( container ){
+    this.container = container;
+
+    this.load();
+}
+
+oLogin.prototype.load = function(){
+    var _this = this;
+
+    _this.container.html( API.render('Login.login') );
+}
