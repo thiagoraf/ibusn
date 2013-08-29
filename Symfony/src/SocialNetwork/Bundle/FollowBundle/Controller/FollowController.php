@@ -19,7 +19,7 @@ class FollowController extends Controller
                 return $response->setData("Você não pode seguir você mesmo!")->render();
             }
             $oFollow = $dbService->getRepository('SocialNetwork\Bundle\FollowBundle\Entity\Follow')->findOneby( array('following' => $me['id'], 'followed' => $params['userId']) );
-            if ( $oFollow->getId() ) {
+            if ( $oFollow && $oFollow->getId() ) {
                 return $response->setData(array("error"=>""))->render();
             }
 
