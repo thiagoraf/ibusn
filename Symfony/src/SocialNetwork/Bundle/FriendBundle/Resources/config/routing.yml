@@ -4,6 +4,12 @@ social_network_friend_my_friends:
     requirements:
             _method:  GET
 
+social_network_friends_user:
+    pattern:  /{userId}
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:userFriend }
+    requirements:
+            _method:  GET
+
 social_network_friend_add:
     pattern:  /friend
     defaults: { _controller: SocialNetworkFriendBundle:Friend:add }

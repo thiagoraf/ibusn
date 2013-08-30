@@ -24,7 +24,7 @@ oIndex.prototype.load = function(){
             });
         } else if ( data[0] == 'friend' ) {
             API.getJS( "Friend.friend" , function() {
-                _this.profile = new oProfile( _this.container );
+                _this.friend = new oFriend( _this.container );
             });
         }
 
