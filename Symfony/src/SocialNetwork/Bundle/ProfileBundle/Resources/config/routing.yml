@@ -9,3 +9,9 @@ social_network_profile:
     defaults: { _controller: SocialNetworkProfileBundle:Profile:user }
     requirements:
             _method:  GET
+
+social_network_visitor:
+    pattern:  /visitor
+    defaults: { _controller: SocialNetworkProfileBundle:Profile:visitor }
+    requirements:
+            _method:  POST

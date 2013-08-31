@@ -29,7 +29,7 @@ class FollowController extends Controller
             $oFollow = new Follow();
             $oFollow->setFollowing( $oFollowing );
             $oFollow->setFollowed( $oFollowed );
-            $oFollow->setDatetime( time()."000" );
+            $oFollow->setDatetime( time() . "000");
 
             $dbService->persist( $oFollow );
             $dbService->flush();

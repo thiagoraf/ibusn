@@ -16,6 +16,13 @@ oProfile.prototype.load = function(){
         return false;
     }
 
+    var result = API.POST("Profile/visitor", {visited: _this.data});
+
+    if ( API.hasError( result ) ) {
+        // falar o erro
+        return false;
+    }
+
     _this.container.html( API.render('Profile.profile') );
 
     _this.profile = _this.container.find("#profile");
