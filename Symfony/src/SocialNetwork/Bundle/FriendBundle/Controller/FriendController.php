@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 class FriendController extends Controller
 {
     /*
-     * TODO: FAZER TODAS AS VALIDAÇÕES NECESSÁRIAS
+     * TODO: FAZER TODAS AS VALIDAï¿½ï¿½ES NECESSï¿½RIAS
      * */
 
     public function myFriendAction()
@@ -24,7 +24,7 @@ class FriendController extends Controller
         $dbService = $this->get('doctrine.orm.entity_manager');
 
         if( $me['id'] == $params['userId'] ) {
-            return $response->setData("Você não pode adicionar você mesmo!")->render();
+            return $response->setData("VocÃª nÃ£o pode adicionar vocÃª mesmo!")->render();
         }
 
         $oMe = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
@@ -89,7 +89,7 @@ class FriendController extends Controller
         $oFriends = $dbService->find('SocialNetwork\Bundle\FriendBundle\Entity\Friends', $params['inviteId']);
 
         if( $oFriends->getIdUserResponse()->getId() != $me['id'] ) {
-            return $response->setData("Erro de permissão!")->render();
+            return $response->setData("Erro de permissÃ£o!")->render();
         }
         $oFriends->setStatus( 1 );
 
@@ -107,7 +107,7 @@ class FriendController extends Controller
         $oFriends = $dbService->find('SocialNetwork\Bundle\FriendBundle\Entity\Friends', $invite );
 
         if( $oFriends->getIdUserResponse()->getId() != $me['id'] ) {
-            return $response->setData("Erro de permissão!")->render();
+            return $response->setData("Erro de permissÃ£o!")->render();
         }
 
         $dbService->remove( $oFriends );

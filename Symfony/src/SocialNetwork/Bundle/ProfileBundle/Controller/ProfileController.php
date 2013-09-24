@@ -8,6 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 
 class ProfileController extends Controller
 {
+
+    public function indexAction( $uid )
+    {
+        return $this->render('SocialNetworkIndexBundle:Default:index.html.twig', array("data" => "profile/$uid"));
+    }
+
     //$oUser = $dbService->getRepository('SocialNetwork\API\Entity\User')->findBy( array("id" => $uid));
     public function user( $uid ) {
         try {
@@ -27,6 +33,14 @@ class ProfileController extends Controller
             if ( !empty ( $user ) ) {
                 $user = $user[0];
                 unset( $user['password'] );
+
+                $user['album'] = $dbService->createQueryBuilder()
+                    ->select( 'a' )
+                    ->from('SocialNetwork\Bundle\ProfileBundle\Entity\Album', 'a')
+                    ->leftJoin('a.owner', 'u')
+                    ->orderBy('a.id','DESC')
+                    ->getQuery()
+                    ->getArrayResult();
 
                 $following = $dbService->createQueryBuilder()
                     ->select( 'f' )
@@ -96,11 +110,6 @@ class ProfileController extends Controller
         return $response->render();
     }
 
-    public function indexAction( $uid )
-    {
-        return $this->render('SocialNetworkIndexBundle:Default:index.html.twig', array("data" => "profile/$uid"));
-    }
-
     public function userAction( $uid )
     {
         $response = new ApiResponse();
@@ -110,5 +119,6 @@ class ProfileController extends Controller
         $response->setData( $user );
         return $response->render();
     }
+
 
 }

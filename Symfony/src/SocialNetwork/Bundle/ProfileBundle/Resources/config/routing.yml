@@ -15,3 +15,9 @@ social_network_visitor:
     defaults: { _controller: SocialNetworkProfileBundle:Profile:visitor }
     requirements:
             _method:  POST
+
+social_network_album:
+    pattern:  /album
+    defaults: { _controller: SocialNetworkProfileBundle:Album:add }
+    requirements:
+            _method:  POST

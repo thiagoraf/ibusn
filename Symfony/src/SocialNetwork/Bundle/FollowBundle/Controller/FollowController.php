@@ -16,11 +16,11 @@ class FollowController extends Controller
             $dbService = $this->get('doctrine.orm.entity_manager');
 
             if( $me['id'] == $params['userId'] ) {
-                return $response->setData("Você não pode seguir você mesmo!")->render();
+                return $response->setData("VocÃª nÃ£o pode seguir vocÃª mesmo!")->render();
             }
             $oFollow = $dbService->getRepository('SocialNetwork\Bundle\FollowBundle\Entity\Follow')->findOneby( array('following' => $me['id'], 'followed' => $params['userId']) );
             if ( $oFollow && $oFollow->getId() ) {
-                return $response->setData(array("error"=>"Você já seguiu este usuário!"))->render();
+                return $response->setData(array("error"=>"VocÃª jÃ¡ seguiu este usuÃ¡rio!"))->render();
             }
 
             $oFollowing = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);

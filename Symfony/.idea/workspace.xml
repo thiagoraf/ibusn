@@ -5,12 +5,42 @@
     <ignored path="Symfony.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377880364594" ignored="false" />
-    <file path="/profile.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377883677669" ignored="false" />
-    <file path="/profile.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377962147737" ignored="false" />
+    <file path="/profile.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379450932848" ignored="false" />
+    <file path="/profile.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379593419245" ignored="false" />
     <file path="$USER_HOME$/parceiros2/cache/dev/appDevDebugProjectContainer.xml" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377892436676" ignored="false" />
     <file path="/me.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377963253930" ignored="false" />
-    <file path="/routing.yml" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377960713569" ignored="false" />
-    <file path="/ProfileController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1377964462301" ignored="false" />
+    <file path="/routing.yml" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379558006776" ignored="false" />
+    <file path="/ProfileController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379557346093" ignored="false" />
+    <file path="/.htaccess" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378912706648" ignored="false" />
+    <file path="$PROJECT_DIR$/../../chat/index.js" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378918168359" ignored="false" />
+    <file path="$PROJECT_DIR$/../../chat/views/homepage.html" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378919895686" ignored="false" />
+    <file path="/a.js" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378918571553" ignored="false" />
+    <file path="/Dummy.regexp" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378918898345" ignored="false" />
+    <file path="/injection.txt" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378918898345" ignored="false" />
+    <file path="$PROJECT_DIR$/../../chat/views/_layout.html" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1378919752578" ignored="false" />
+    <file path="/albums.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379593316527" ignored="false" />
+    <file path="/friend.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379460363586" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/ManageEmployeeBundle/Controller/ManageEmployeeController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379531066326" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/NewULBundle/Controller/NewULController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379511636432" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/ManageEmployeeBundle/Resources/views/JS/manageEmployee.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379525737824" ignored="false" />
+    <file path="/ManageEmployeeController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379529584517" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/API/Service/LdapService.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379530128347" ignored="false" />
+    <file path="/LdapService.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379527561208" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/ManageEmployeeBundle/Resources/views/EJS/new.message.employee.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379531059660" ignored="false" />
+    <file path="/new.message.employee.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379530535584" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/API/Controller/ResourcesController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379532135308" ignored="false" />
+    <file path="/ResourcesController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379531584748" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/app/config/parameters.yml" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379533168052" ignored="false" />
+    <file path="/*.regexp" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379532346419" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/cache/dev/appDevDebugProjectContainer.xml" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379532391303" ignored="false" />
+    <file path="/notification.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379556353142" ignored="false" />
+    <file path="/AlbumController.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379561132417" ignored="false" />
+    <file path="/Album.php" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379561211664" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/PreventiveBundle/Resources/views/EJS/preventive.ejs.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379599245133" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/PreventiveBundle/Resources/views/JS/preventive.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379598420993" ignored="false" />
+    <file path="/preventive.js.twig" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379598238865" ignored="false" />
+    <file path="$USER_HOME$/Prognus/ExpressoParceiros/symfony/src/Prognus/Bundle/PreventiveBundle/Resources/public/css/style.css" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379599534281" ignored="false" />
+    <file path="/style.css" changelist="b79c7143-06a9-4b24-abae-8850bc4d6d5d" time="1379599329959" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,86 +60,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="profile.ejs.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="24" selection-start="614" selection-end="614" vertical-scroll-proportion="-10.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="me.ejs.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="248" column="73" selection-start="7977" selection-end="7977" vertical-scroll-proportion="-18.166666">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Visitors.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Visitors.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="29" selection-start="143" selection-end="143" vertical-scroll-proportion="5.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileController.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="49" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.59386283">
-              <folding>
-                <element signature="e#65#120#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FollowController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FollowBundle/Controller/FollowController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="48" selection-start="1407" selection-end="1407" vertical-scroll-proportion="-13.791667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Friends.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="4" selection-start="580" selection-end="781" vertical-scroll-proportion="-11.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="friends.ejs.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/friends.ejs.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="groups.ejs.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/groups.ejs.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="profile.js.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="53" selection-start="750" selection-end="754" vertical-scroll-proportion="0.0">
+            <state line="77" column="29" selection-start="2283" selection-end="2283" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="API.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/API/Resources/public/js/API.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="308" column="86" selection-start="8200" selection-end="8200" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/JS/index.js.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +99,55 @@
       <file leaf-file-name="routing.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="63" selection-start="440" selection-end="447" vertical-scroll-proportion="0.0">
+            <state line="22" column="26" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/services.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="albums.ejs.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/albums.ejs.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="31" selection-start="383" selection-end="383" vertical-scroll-proportion="-6.875">
+              <folding>
+                <element signature="n#style#0;n#input#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="32" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-21.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/AlbumController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="-11.458333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Album.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Album.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="47" selection-start="537" selection-end="543" vertical-scroll-proportion="-5.408163">
               <folding />
             </state>
           </provider>
@@ -134,22 +163,47 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.profile.ejs.twig" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Visitors.php" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FollowBundle/Controller/FollowController.php" />
+        <option value="$PROJECT_DIR$/web/.htaccess" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/photos.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Resources/views/JS/friend.js.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Resources/views/EJS/friend.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/AlbumController.php" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Album.php" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/list.albums.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/albums.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/API/Resources/views/JS/notification.js.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/API/Resources/public/js/API.js" />
       </list>
     </option>
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
-    <option name="width" value="1360" />
-    <option name="height" value="744" />
+    <option name="x" value="-1" />
+    <option name="y" value="-4" />
+    <option name="width" value="1602" />
+    <option name="height" value="905" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Phing</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -262,6 +316,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -292,11 +416,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProfileBundle" />
+              <option name="myItemId" value="API" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -326,11 +446,71 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
+              <option name="myItemId" value="API" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ProfileBundle" />
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="API" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -342,171 +522,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProfileBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProfileBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FollowBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FollowBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/parceiros2" />
+    <property name="options.lastSelected" value="preferences.fileTypes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
       <JSDebuggerConfigurationSettings>
         <option name="engineId" value="embedded" />
@@ -517,6 +552,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b79c7143-06a9-4b24-abae-8850bc4d6d5d" name="Default" comment="" />
@@ -526,14 +578,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1360" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="-4" width="1602" height="905" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29984778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22458172" sideWeight="0.989432" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -542,7 +594,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -609,122 +661,139 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig">
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Visitors.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="24" selection-start="614" selection-end="614" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2999" selection-end="2999" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/friends.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/groups.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="6" selection-start="1866" selection-end="2009" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="5263" selection-end="5263" vertical-scroll-proportion="1.4755043" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/groups.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/friends.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/profile.ejs.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="24" selection-start="614" selection-end="614" vertical-scroll-proportion="-10.0">
+        <state line="23" column="4" selection-start="351" selection-end="538" vertical-scroll-proportion="0.2166065">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="63" selection-start="440" selection-end="447" vertical-scroll-proportion="0.0">
+        <state line="22" column="26" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig">
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="73" selection-start="7977" selection-end="7977" vertical-scroll-proportion="-18.166666">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Visitors.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="143" selection-end="143" vertical-scroll-proportion="5.625">
+        <state line="7" column="0" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/AlbumController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="53" selection-start="750" selection-end="754" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FollowBundle/Controller/FollowController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="48" selection-start="1407" selection-end="1407" vertical-scroll-proportion="-13.791667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="4" selection-start="580" selection-end="781" vertical-scroll-proportion="-11.25">
+        <state line="23" column="29" selection-start="671" selection-end="671" vertical-scroll-proportion="-11.458333">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="49" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.59386283">
+        <state line="37" column="32" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-21.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/EJS/navbar.ejs.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.504373">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="106" selection-start="1333" selection-end="1337" vertical-scroll-proportion="30.166666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/EJS/sidebar.ejs.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/list.albums.ejs.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="28" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#65#120#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/API/Resources/public/js/API.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="308" column="86" selection-start="8200" selection-end="8200" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/JS/index.js.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="47" selection-start="537" selection-end="543" vertical-scroll-proportion="-5.408163">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/albums.ejs.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="31" selection-start="383" selection-end="383" vertical-scroll-proportion="-6.875">
+          <folding>
+            <element signature="n#style#0;n#input#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/API/Resources/views/JS/notification.js.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="5" selection-start="436" selection-end="436" vertical-scroll-proportion="0.46478873">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="29" selection-start="2283" selection-end="2283" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 

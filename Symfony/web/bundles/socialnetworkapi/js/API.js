@@ -39,6 +39,8 @@ var oAPI = function( url, useMe  )
     {
         return (  typeof this.data[att] == 'undefined' ) ? false : this.data[att];
     }
+
+    this.loadNotification();
 }
 
 /**
@@ -298,6 +300,17 @@ oAPI.prototype.form = function ( target, fileInputs ){
     return result;
 }
 
+/**
+ * Load helpers Methods
+ *
+ * @method loadNotification
+ */
+oAPI.prototype.loadNotification = function ()
+{
+    var _this = this;
+    _this.getJS("API.notification", function(){ _this.notification = new oNotification(); })
+
+}
 
 /**
  * Extend the jquery getScrip and helps with browser debugging.

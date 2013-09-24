@@ -8,10 +8,9 @@ oProfile = function( container, data ){
 oProfile.prototype.load = function(){
     var _this = this;
 
-    var data = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
-    _this.userProfileId = data.id;
+    _this.userProfile = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
 
-    if ( data && $.isEmptyObject(data) ) {
+    if ( _this.userProfile && $.isEmptyObject( _this.userProfile ) ) {
         _this.container.html( API.render('Profile.not.found') );
         return false;
     }
@@ -26,9 +25,20 @@ oProfile.prototype.load = function(){
     _this.container.html( API.render('Profile.profile') );
 
     _this.profile = _this.container.find("#profile");
+    _this.albums  = _this.container.find("#albums");
+    _this.friend  = _this.container.find("#friend");
+    _this.photos  = _this.container.find("#photos");
 
-    _this.profile.html( API.render("Profile.me", data) );
+    _this.profileContainer();
+    _this.albumContainer();
+    _this.friendContainer();
 
+}
+
+oProfile.prototype.profileContainer = function() {
+    var _this = this;
+
+    _this.profile.html( API.render("Profile.me", _this.userProfile) );
 
     _this.profile.find('#profile-feed-1').slimScroll({
         height: '250px',
@@ -37,42 +47,100 @@ oProfile.prototype.load = function(){
 
     _this.profile.find('.add-as-friend').click(function(){
 
-        var result = API.POST("Friend/friend", {"userId" : _this.userProfileId});
+        var result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
 
         if ( API.hasError(result) ) {
-            //TODO: Informar o erro!
+            API.notification.notify("Erro",result.error(),"error");
             return false;
         }
-        // TODO: Informar sucesso ao adicionar o usu�rio
+
+        API.notification.notify("Parabéns!","Você acaba de enviar uma solicitação de amizade.","success");
     });
 
     _this.profile.find('.follow').click(function(){
 
         if( $(this).hasClass("follow-this-person") ) {
 
-            var result = API.POST("Follow/follow", {"userId" : _this.userProfileId});
+            var result = API.POST("Follow/follow", {"userId" : _this.userProfile.id});
 
             if ( API.hasError(result) ) {
-                //TODO: Informar o erro!
+                API.notification.notify("Erro",result.error(),"error");
                 return false;
             }
-            // TODO: Informar sucesso ao seguir o usu�rio
+
+            API.notification.notify("Parabéns!","Você está seguindo um novo usuário.","success");
             $(this).removeClass("follow-this-person").addClass("unfollow-this-person");
             $(this).find("span").text("Deixar de seguir esta pessoa");
 
         } else if ( $(this).hasClass("unfollow-this-person") ) {
 
-            var result = API.DELETE("Follow/unfollow/"+ _this.userProfileId);
+            var result = API.DELETE("Follow/unfollow/"+ _this.userProfile.id);
 
             if ( API.hasError(result) ) {
-                //TODO: Informar o erro!
+                API.notification.notify("Erro",result.error(),"error");
                 return false;
             }
 
+
+            API.notification.notify("Parabéns!","Você deixou de seguir um usuário.","success");
             $(this).removeClass("unfollow-this-person").addClass("follow-this-person");
             $(this).find("span").text("Seguir esta pessoa");
         }
 
     });
+}
+
+oProfile.prototype.albumContainer = function(){
+    var _this = this;
+
+    _this.albums.html( API.render("Profile.albums") );
+    _this.albums.find(".list-albums").html( API.render("Profile.list.albums", _this.userProfile) );
+
+    _this.albums.find(".list-albums button.open").click(function(){
+        _this.container.find(".tab-content #albums").removeClass("active");
+        _this.container.find(".tab-content #photos").addClass("active");
+        _this.photoContainer();
+    });
+
+    _this.albums.find(".create-album").click(function( event ){
+
+        var form = API.form( _this.albums.find("form[name=createAlbum]") );
+
+        var result = API.POST("Profile/album", form);
+
+        if ( API.hasError( result ) ) {
+            API.notification.notify("Erro",result.error(),"error");
+            return false;
+        }
+
+        API.notification.notify("Album","Criado com sucesso!","success");
+        _this.userProfile = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
+        _this.albums.find(".list-albums").fadeOut().html( API.render("Profile.list.albums", _this.userProfile)).fadeIn();
+        _this.albums.find("input[name=album]").val("");
+
+    });
+}
+
+oProfile.prototype.photoContainer = function() {
+    var _this = this;
+
+    _this.photos.html( API.render("Profile.photos") );
+
+    _this.photos.find("button.return").click(function(){
+        _this.container.find(".tab-content #photos").removeClass("active");
+        _this.container.find(".tab-content #albums").addClass("active");
+    });
+
+    _this.photos.find(".list-photos").html( API.render("Profile.list.photos"));
+
+
 
 }
+
+
+oProfile.prototype.friendContainer = function(){
+    var _this = this;
+
+    _this.friend.html( API.render("Friend.friend") );
+}
+
