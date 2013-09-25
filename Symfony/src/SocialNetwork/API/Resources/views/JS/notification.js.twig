@@ -1,0 +1,87 @@
+/**
+ * @class oNotification
+ * @constructor
+ */
+oNotification= function (){}
+
+
+oNotification.prototype.notify = function( title, description, type ){
+    $.pnotify({
+        title: title,
+        text: description,
+        type: type
+    });
+}
+
+
+oNotification.prototype.confirm = function(description, callback){
+
+    var modal_overlay;
+    if (typeof info_box != "undefined") {
+        info_box.pnotify_display();
+        return;
+    }
+
+    var layout = '<div class="confirmation">'+
+        '<div class="header">'+
+        '<h3>'+ description +'</h3>'+
+        '</div>'+
+        '<hr/>'+
+        '<div class="actions">'+
+        "<button class='confirm orange'>{% trans %}Apply{% endtrans %}</button>"+
+        '<button class="cancel blue">{% trans %}Cancel{% endtrans %}</button>'+
+        '</div>'+
+        '</div>';
+
+    var info_box = $.pnotify({
+        text: $(layout),
+        width: '370px',
+        type: "info",
+        icons: 'ui-icon-alert',
+        addclass: 'pnotify-confirmation',
+        history: false,
+        stack: false,
+        hide: false,
+        closer: false,
+        sticker: false,
+        insert_brs: false,
+        before_open: function(pnotify) {
+            // Position this notice in the center of the screen.
+            pnotify.css({
+                "top": ($(window).height() / 2) - (pnotify.height() / 2),
+                "left": ($(window).width() / 2) - (pnotify.width() / 2)
+            });
+            // Make a modal screen overlay.
+            if (modal_overlay) modal_overlay.fadeIn("fast");
+            else modal_overlay = $("<div />", {
+                "class": "ui-widget-overlay",
+                "css": {
+                    "display": "none",
+                    "position": "fixed",
+                    "top": "0",
+                    "bottom": "0",
+                    "right": "0",
+                    "left": "0"
+                }
+            }).appendTo("body").fadeIn("fast");
+
+            $('.ui-pnotify div.confirmation').find('button').button()
+                .filter('.confirm').click(function( event ){
+
+                    info_box.pnotify_remove();
+                    callback( true );
+
+                }).end()
+                .filter('.cancel').click(function( event ){
+
+                    info_box.pnotify_remove();
+                    callback( false );
+
+                });
+        },
+        before_close: function(){
+            modal_overlay.fadeOut("fast");
+        }
+    });
+}
+

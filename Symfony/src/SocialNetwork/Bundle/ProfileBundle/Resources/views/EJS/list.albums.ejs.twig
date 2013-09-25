@@ -1,0 +1,24 @@
+<% var albums = data.album; %>
+
+<div class="span12" style="margin: 0 0 15px 0;">
+    <% var count = 1;%>
+    <% $.each(albums, function(i, album){ %>
+    <div class="span3">
+        <div class="thumb-pad">
+            <div class="thumbnail">
+                <img src="img/stock_images/700x430_1.jpg" alt="">
+                <div class="caption">
+                    <h5><%= album.title %></h5>
+                    <p>Quisque nulla. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.</p>
+                    <button type="button" class="btn open">Abrir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if( count == 4 ) { count = 0; %>
+</div>
+<div class="span12" style="margin: 0 0 15px 0;">
+    <% } count++; %>
+
+    <% }) %>
+</div>
