@@ -24,11 +24,10 @@ class FollowController extends Controller
             }
 
             $oFollowing = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
-            $oFollowed = $dbService->find('SocialNetwork\API\Entity\User', $params['userId']);
 
             $oFollow = new Follow();
             $oFollow->setFollowing( $oFollowing );
-            $oFollow->setFollowed( $oFollowed );
+            $oFollow->setFollowed( $params['userId'] );
             $oFollow->setDatetime( time() . "000");
 
             $dbService->persist( $oFollow );
