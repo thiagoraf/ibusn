@@ -5,31 +5,77 @@ oHome = function( container ){
 }
 
 oHome.prototype.load = function() {
-    var _this = this;
-    _this.container.html( API.render('Home.home') );
+    var self = this;
+    self.container.html( API.render('Home.home') );
 
-    _this.chat();
+    self.chatBox = self.container.find('.chat-box-home');
+    self.recentBox = self.container.find("#recent-box");
+    self.eventsBox = self.container.find("#events-box");
 
-    _this.container.find('.dialogs,.comments').slimScroll({
+    self.chat();
+    self.recent();
+    self.events();
+
+    self.container.find('.dialogs,.comments').slimScroll({
         height: '300px'
     });
 }
 
-oHome.prototype.chat = function() {
-    var _this = this;
+oHome.prototype.events = function() 
+{
+    var self = this;
 
-    var chat = _this.container.find('.chat-box-home');
-    chat.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
+    self.eventsBox.find(".widget-main").html(API.render("Home.list.events", API.GET("Event/list")));
 
-    chat.find(".send-message-chat").click(function(){
-        var form = API.form( chat.find("form[name=form-send-message]") );
+    self.eventsBox.find(".add-event").click(function(){
+
+        self.eventsBox.addEvent = self.eventsBox.find(".add-event-modal");
+
+        var modal = self.eventsBox.addEvent.modal().html( API.render( "Home.add.event.modal" ) );
+
+        modal.find(".save-event").click( function() {
+            var $result = API.POST("Event/add", API.form(modal.find('form')));
+
+            if( API.hasError( $result ) ) 
+            {
+                API.notification("Erro","Não foi possível criar um evento!","error");
+                return false;
+            }
+
+            API.notification("Parabéns","O evento foi criado com sucesso!","success");
+        });
+
+    });  
+
+}
+
+oHome.prototype.recent = function() 
+{
+    var self = this;
+
+    self.recentBox.memberTab = self.recentBox.find("#member-tab");
+
+    var newMembers = API.GET("Home/new/members");
+
+    self.recentBox.memberTab.find(".new-members").html( API.render("Home.new.members", newMembers) );
+}
+
+oHome.prototype.chat = function() 
+{
+    var self = this;
+
+   
+    self.chatBox.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
+
+    self.chatBox.find(".send-message-chat").click(function(){
+        var form = API.form( chatBox.find("form[name=form-send-message]") );
         var result = API.POST( 'Home/chat', form);
 
         if ( API.hasError(result) ) {
             // TODO: informar o erro com o balãozinho de erro!
             return false;
         }
-        chat.find("input[name=message]").val("");
-        chat.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
+        self.chatBox.find("input[name=message]").val("");
+        chatBox.find('.dialogs').html( API.render( 'Home.chat.box.home', API.GET( 'Home/chat' ) ) );
     });
 }
