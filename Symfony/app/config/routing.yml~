@@ -1,0 +1,31 @@
+social_network_event:
+    resource: "@SocialNetworkEventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+social_network_follow:
+    resource: "@SocialNetworkFollowBundle/Resources/config/routing.yml"
+    prefix:   /Follow
+
+social_network_friend:
+    resource: "@SocialNetworkFriendBundle/Resources/config/routing.yml"
+    prefix:   /Friend
+
+social_network_login:
+    resource: "@SocialNetworkLoginBundle/Resources/config/routing.yml"
+    prefix:   /
+
+social_network_profile:
+    resource: "@SocialNetworkProfileBundle/Resources/config/routing.yml"
+    prefix:   /Profile
+
+social_network_home:
+    resource: "@SocialNetworkHomeBundle/Resources/config/routing.yml"
+    prefix:   /Home
+
+_index:
+    resource: "@SocialNetworkIndexBundle/Resources/config/routing.yml"
+    prefix:   /
+
+api:
+    resource: "@SocialNetworkAPI/Resources/config/routing.yml"
+    prefix: /API/

@@ -1,0 +1,15 @@
+social_network_event_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SocialNetworkEventBundle:Default:index }
+
+social_network_event_add:
+    pattern:  /add
+    defaults: { _controller: SocialNetworkEventBundle:Event:add }
+    requirements:
+        _method:  POST
+
+social_network_event_add:
+    pattern:  /add
+    defaults: { _controller: SocialNetworkEventBundle:Event:get }
+    requirements:
+        _method:  GET

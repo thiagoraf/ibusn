@@ -1,0 +1,8 @@
+<%
+var events = data;
+%>
+<% $.each(events, function(i, event){ %>
+	<p class="alert alert-info">
+	    <%= event.title %>
+	</p>	
+<% }); %>
