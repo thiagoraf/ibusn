@@ -10,10 +10,9 @@ oIndex = function( data ){
 oIndex.prototype.load = function(){
     var _this = this;
 
-
     /*
     * TODO: Tentar fazer de maneira diferente!
-    * Essa condição serve para verificar se algo foi informado na URL
+    * Essa condiï¿½ï¿½o serve para verificar se algo foi informado na URL
     * EX: Profile/thiago
     * */
      if ( _this.data ) {
@@ -36,18 +35,6 @@ oIndex.prototype.load = function(){
 
    _this.loadNavbar();
    _this.loadSidebar();
-
-    _this.sidebar.find('#nav-list a.home').click( function(){
-        API.getJS( 'Home.home' , function() {
-            _this.home = new oHome( _this.container );
-        });
-    })
-
-    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function(){
-        location.href = API.dataUrl+"Profile/"+API.me.data.uid;
-    });
-
-
 }
 
 oIndex.prototype.loadNavbar = function() {
@@ -91,6 +78,21 @@ oIndex.prototype.loadSidebar = function() {
     var _this = this;
 
     _this.sidebar.html( API.render('Index.sidebar') );
+
+    _this.sidebar.find('#nav-list a.home').click( function(){
+        API.getJS( 'Home.home' , function() {
+            _this.home = new oHome( _this.container );
+        });
+    })
+
+    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function(){
+        location.href = API.dataUrl+"Profile/"+API.me.data.uid;
+    });
+
+    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function() {
+        
+        
+    });
 
     _this.sidebar.find(".sidebar-shortcuts-large").find("button").tooltip();
 }

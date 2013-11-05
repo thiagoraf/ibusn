@@ -38,11 +38,11 @@ oHome.prototype.events = function()
 
             if( API.hasError( $result ) ) 
             {
-                API.notification("Erro","Não foi possível criar um evento!","error");
+                API.notification("Erro","Nï¿½o foi possï¿½vel criar um evento!","error");
                 return false;
             }
 
-            API.notification("Parabéns","O evento foi criado com sucesso!","success");
+            API.notification("Parabï¿½ns","O evento foi criado com sucesso!","success");
         });
 
     });  
@@ -72,7 +72,7 @@ oHome.prototype.chat = function()
         var result = API.POST( 'Home/chat', form);
 
         if ( API.hasError(result) ) {
-            // TODO: informar o erro com o balãozinho de erro!
+            // TODO: informar o erro com o balï¿½ozinho de erro!
             return false;
         }
         self.chatBox.find("input[name=message]").val("");

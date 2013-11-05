@@ -321,11 +321,11 @@ oAPI.prototype.loadNotification = function ()
  */
 $.extend({
     getScript: function(url, callback) {
-        var head	= document.getElementsByTagName("head")[0];
-        var script	= document.createElement("script");
-        var done 	= false; // Handle Script loading
+        var head    = document.getElementsByTagName("head")[0];
+        var script  = document.createElement("script");
+        var done    = false; // Handle Script loading
 
-        script.src	= url;
+        script.src  = url;
         script.charset = 'UTF-8';
         script.onload = script.onreadystatechange = function() { // Attach handlers for all browsers
             if ( !done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") ) {
