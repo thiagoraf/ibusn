@@ -30,6 +30,14 @@ security:
             pattern:  ^/login$
             security: false
 
+        API_home:
+            pattern:  ^/API/js/Home.home$
+            security: false
+
+        API_login:
+            pattern:  ^/API/js/Login.login$
+            security: false
+
         secured_area:
             pattern: ^/
             form_login:

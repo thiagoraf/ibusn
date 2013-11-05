@@ -7,10 +7,11 @@
     <meta name="description" content="User login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--basic styles
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />-->
+    <!--basic styles -->
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/socialnetworkapi/plugins/bootstrap/css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/bootstrap-responsive.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/font-awesome.min.css') }}" />
+
 
 
     <!--[if IE 7]>
@@ -29,7 +30,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/ace-skins.min.css') }}" />
 
     <!--[if lte IE 8]>
-    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/ace-ie.min.css') }}" />
     <![endif]-->
 
     <!--inline styles related to this page-->
@@ -89,8 +90,7 @@
                                 <input type="checkbox" />
                                 <span class="lbl"> Lembrar-me</span>
                             </label>
-    <input type="submit" name="login">
-                            <button onclick="return false;" class="width-35 pull-right btn btn-small btn-primary">
+                            <button type="submit" class="width-35 pull-right btn btn-small btn-primary">
                                 <i class="icon-key"></i>
                                 Logar
                             </button>
@@ -112,7 +112,7 @@
 
                     <div>
                         <a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
-                            Eu quero me registrar
+                            Cadastrar
                             <i class="icon-arrow-right"></i>
                         </a>
                     </div>
@@ -125,12 +125,12 @@
                 <div class="widget-main">
                     <h4 class="header red lighter bigger">
                         <i class="icon-key"></i>
-                        Retrieve Password
+                        Recuperar senha
                     </h4>
 
                     <div class="space-6"></div>
                     <p>
-                        Enter your email and to receive instructions
+                        Insira seu e-mail para receber as instruções
                     </p>
 
                     <form />
@@ -145,7 +145,7 @@
                         <div class="clearfix">
                             <button onclick="return false;" class="width-35 pull-right btn btn-small btn-danger">
                                 <i class="icon-lightbulb"></i>
-                                Send Me!
+                                Enviar!
                             </button>
                         </div>
                     </fieldset>
@@ -154,7 +154,7 @@
 
                 <div class="toolbar center">
                     <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
-                        Back to login
+                        Voltar para o login
                         <i class="icon-arrow-right"></i>
                     </a>
                 </div>
@@ -166,11 +166,11 @@
                 <div class="widget-main">
                     <h4 class="header green lighter bigger">
                         <i class="icon-group blue"></i>
-                        New User Registration
+                        É rapidinho para se cadastrar!
                     </h4>
 
                     <div class="space-6"></div>
-                    <p> Enter your details to begin: </p>
+                    <p> Preencha os dados abaixo: </p>
 
                     <form />
                     <fieldset>
@@ -183,21 +183,21 @@
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="text" class="span12" placeholder="Username" />
+                                <input type="text" class="span12" placeholder="Usuário" />
                                 <i class="icon-user"></i>
                             </span>
                         </label>
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="password" class="span12" placeholder="Password" />
+                                <input type="password" class="span12" placeholder="Senha" />
                                 <i class="icon-lock"></i>
                             </span>
                         </label>
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="password" class="span12" placeholder="Repeat password" />
+                                <input type="password" class="span12" placeholder="Repita a senha" />
                                 <i class="icon-retweet"></i>
                             </span>
                         </label>
@@ -205,8 +205,8 @@
                         <label>
                             <input type="checkbox" />
                             <span class="lbl">
-                                I accept the
-                                <a href="#">User Agreement</a>
+                                Eu aceito os
+                                <a href="#">Termos de uso</a>
                             </span>
                         </label>
 
@@ -215,11 +215,11 @@
                         <div class="clearfix">
                             <button type="reset" class="width-30 pull-left btn btn-small">
                                 <i class="icon-refresh"></i>
-                                Reset
+                                Resetar
                             </button>
 
                             <button onclick="return false;" class="width-65 pull-right btn btn-small btn-success">
-                                Register
+                                Cadastrar
                                 <i class="icon-arrow-right icon-on-right"></i>
                             </button>
                         </div>
@@ -230,7 +230,7 @@
                 <div class="toolbar center">
                     <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
                         <i class="icon-arrow-left"></i>
-                        Back to login
+                        Voltar para o login
                     </a>
                 </div>
             </div><!--/widget-body-->
@@ -270,16 +270,17 @@
 <![endif]-->
 
 <script type="text/javascript">
-    if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if("ontouchend" in document) document.write("<script src='{{ asset('bundles/socialnetworkindex/js/jquery.mobile.custom.min.js') }}'>"+"<"+"/script>");
 </script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="{{ asset('bundles/socialnetworkindex/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery.pnotify/jquery.pnotify.js') }}"> </script>
 
 <!--page specific plugin scripts-->
 
 <!--ace scripts-->
 
-<script src="assets/js/ace-elements.min.js"></script>
-<script src="assets/js/ace.min.js"></script>
+<script src="{{ asset('bundles/socialnetworkindex/js/ace-elements.min.js') }}"></script>
+<script src="{{ asset('bundles/socialnetworkindex/js/ace.min.js') }}"></script>
 
 <!--inline scripts related to this page-->
 
@@ -289,5 +290,20 @@
         $('#'+id).addClass('visible');
     }
 </script>
+
+
+<script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery.rest/jquery.rest.js') }}"> </script>
+<script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/ejs/ejs.js') }}"> </script>
+<script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/js/Exception.js') }}"> </script>
+<script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/js/API.js') }}"> </script>
+
+<script type="text/javascript" src="{{ asset('API/js/Login.login') }}"></script>
+
+<script>
+    API = new oAPI("{{ asset('') }}" , true)
+    Login = new oLogin();
+</script>
+
+
 </body>
 </html>
