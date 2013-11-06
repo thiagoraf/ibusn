@@ -3,8 +3,9 @@
 namespace SocialNetwork\API\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Symfony\Component\HttpFoundation\Response;
-use SocialNetwork\API\Response\ApiResponse;
+    Symfony\Component\HttpFoundation\Response,
+    SocialNetwork\API\Response\ApiResponse,
+    SocialNetwork\API\Entity\User;
 
 /**
  * Class ResourcesController
@@ -76,6 +77,24 @@ class ResourcesController extends Controller
 
         $user['roles'] =  $oUser->getRoles();
         $response->setData( $user );
+        return $response->render();
+    }
+
+    public function addUserAction()
+    {
+        $response = new ApiResponse();
+        $dbService = $this->get('doctrine.orm.entity_manager');
+        $user = $this->getRequest()->request->all();
+
+        $oUser = new User();
+        $oUser->setUid( $user['username'] );
+        $oUser->setName( $user['name'] );
+        $oUser->setPassword( md5( $user['password'] ) );
+        $oUser->setRegistered( time().'000' );
+
+        $dbService->persist( $oUser );
+        $dbService->flush();
+
         return $response->render();
     }
 

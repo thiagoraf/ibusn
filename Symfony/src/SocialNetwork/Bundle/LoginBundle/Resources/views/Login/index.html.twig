@@ -11,7 +11,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('bundles/socialnetworkapi/plugins/bootstrap/css/bootstrap.css') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/bootstrap-responsive.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/font-awesome.min.css') }}" />
-
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/socialnetworkapi/plugins/jquery.pnotify/jquery.pnotify.default.css') }}"/>
 
 
     <!--[if IE 7]>
@@ -176,28 +176,35 @@
                     <fieldset>
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="email" class="span12" placeholder="Email" />
+                                <input type="email" name="email" class="span12" placeholder="Email" />
                                 <i class="icon-envelope"></i>
                             </span>
                         </label>
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="text" class="span12" placeholder="Usuário" />
+                                <input type="text" name="username" class="span12" placeholder="Usuário" />
                                 <i class="icon-user"></i>
                             </span>
                         </label>
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="password" class="span12" placeholder="Senha" />
+                                <input type="text" name="name" class="span12" placeholder="Nome" />
+                                <i class="icon-envelope"></i>
+                            </span>
+                        </label>
+
+                        <label>
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" name="password" class="span12" placeholder="Senha" />
                                 <i class="icon-lock"></i>
                             </span>
                         </label>
 
                         <label>
                             <span class="block input-icon input-icon-right">
-                                <input type="password" class="span12" placeholder="Repita a senha" />
+                                <input type="password" class="span12" name="re-password" placeholder="Repita a senha" />
                                 <i class="icon-retweet"></i>
                             </span>
                         </label>
@@ -218,7 +225,7 @@
                                 Resetar
                             </button>
 
-                            <button onclick="return false;" class="width-65 pull-right btn btn-small btn-success">
+                            <button type="button" class="width-65 pull-right btn btn-small btn-success register">
                                 Cadastrar
                                 <i class="icon-arrow-right icon-on-right"></i>
                             </button>
@@ -228,10 +235,12 @@
                 </div>
 
                 <div class="toolbar center">
-                    <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
-                        <i class="icon-arrow-left"></i>
-                        Voltar para o login
-                    </a>
+                    <div class="back-to-login">
+                        <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                            <i class="icon-arrow-left"></i>
+                            Voltar para o login
+                        </a>
+                    </div>
                 </div>
             </div><!--/widget-body-->
         </div><!--/signup-box-->
@@ -245,12 +254,6 @@
 
 <!--basic scripts-->
 
-<!--[if !IE]>-->
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!--<![endif]-->
-
 <!--[if IE]>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <![endif]-->
@@ -258,7 +261,7 @@
 <!--[if !IE]>-->
 
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    window.jQuery || document.write("<script src='{{ asset('bundles/socialnetworkindex/js/jquery-2.0.3.min.js') }}'>"+"<"+"/script>");
 </script>
 
 <!--<![endif]-->
@@ -302,7 +305,7 @@
 <script type="text/javascript" src="{{ asset('API/js/Login.login') }}"></script>
 
 <script>
-    API = new oAPI("{{ asset('') }}" , true)
+    API = new oAPI("{{ asset('') }}" , false);
     Login = new oLogin();
 </script>
 

@@ -45,7 +45,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="age", type="string", length=255)
+     * @ORM\Column(name="age", type="string", length=255, nullable=TRUE)
      */
     private $age;
 
@@ -59,29 +59,23 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="lastloggin", type="bigint", length=255)
+     * @ORM\Column(name="lastloggin", type="bigint", length=255, nullable=TRUE)
      */
     private $lastLoggin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=TRUE)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="about_me", type="text")
+     * @ORM\Column(name="about_me", type="text", nullable=TRUE)
      */
     private $aboutMe;
-
-    /**
-    * @var array $follow
-    * @ORM\OneToMany(targetEntity="SocialNetwork\Bundle\FollowBundle\Entity\Follow", mappedBy="followed", cascade={"remove"}, fetch="EAGER")
-    */
-    private $follow;
 
 
     /**
@@ -242,21 +236,5 @@ class User
     public function getLastLoggin()
     {
         return $this->lastLoggin;
-    }
-
-    /**
-     * @param array $follow
-     */
-    public function setFollow($follow)
-    {
-        $this->follow = $follow;
-    }
-
-    /**
-     * @return array
-     */
-    public function getFollow()
-    {
-        return $this->follow;
     }
 }

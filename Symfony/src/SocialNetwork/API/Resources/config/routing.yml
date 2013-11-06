@@ -14,3 +14,9 @@ API_user_me:
     defaults: { _controller: SocialNetworkAPI:Resources:userMe }
     requirements:
             _method:  GET
+
+API_user_add:
+    pattern:  /addUser
+    defaults: { _controller: SocialNetworkAPI:Resources:addUser }
+    requirements:
+        _method:  POST

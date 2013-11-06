@@ -34,6 +34,14 @@ security:
             pattern:  ^/API/js/Home.home$
             security: false
 
+        API_notification:
+            pattern:  ^/API/js/API.notification$
+            security: false
+
+        API_addUser:
+            pattern:  ^/API/addUser$
+            security: false
+
         API_login:
             pattern:  ^/API/js/Login.login$
             security: false

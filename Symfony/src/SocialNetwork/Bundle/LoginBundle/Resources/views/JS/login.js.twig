@@ -1,11 +1,70 @@
-oLogin = function( container ){
-    this.container = container;
+oLogin = function(){
+    this.signup = $("#signup-box");
 
     this.load();
 }
 
 oLogin.prototype.load = function(){
-    var _this = this;
+    var self = this;
 
-    _this.container.html( API.render('Login.login') );
+    self.signup.find("button.register").click( function(){ self.signupBox() } );
 }
+
+oLogin.prototype.signupBox = function()
+{
+    var self = this;
+
+    var $form = API.form( self.signup.find("form") );
+
+    if( self.formIsValid( $form ) )
+    {
+        var $result = API.POST("API/addUser", $form);
+
+        if( API.hasError( $result ) )
+        {
+            API.notification.notify("Erro",$result.error, "error")
+            return false;
+        }
+
+        API.notification.notify("Parabéns","Sua conta foi criada com sucesso!","success");
+        self.signup.find("div.back-to-login").pulsate({ color: '#FE9'});
+    }
+}
+
+
+
+oLogin.prototype.formIsValid = function( form ) {
+
+    if( form['password'] != form['re-password'] )
+    {
+        API.notification.notify("Erro", "As senhas não são iguais!", "error")
+        return false;
+    }
+
+    if( form['password'] == "" )
+    {
+        API.notification.notify("Erro", "O campo senha não pode ficar em branco!", "error")
+        return false;
+    }
+
+    if( form['email'] == "" )
+    {
+        API.notification.notify("Erro", "O campo email não pode ficar em branco!", "error")
+        return false;
+    }
+
+    if( form['name'] == "" )
+    {
+        API.notification.notify("Erro", "O campo nome não pode ficar em branco!", "error")
+        return false;
+    }
+
+    if( form['Username'] == "" )
+    {
+        API.notification.notify("Erro", "O campo usuário não pode ficar em branco!", "error")
+        return false;
+    }
+
+    return true;
+}
+
