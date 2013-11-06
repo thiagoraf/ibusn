@@ -22,16 +22,16 @@ class Visitors
     private $id;
 
     /**
-     * @var User $visited
-     * @ORM\ManyToOne(targetEntity="SocialNetwork\API\Entity\User")
-     * @ORM\JoinColumn(name="visitor", referencedColumnName="id", nullable=FALSE)
+     * @var integer
+     *
+     * @ORM\Column(name="visitor", type="integer")
      */
     private $visitor;
 
     /**
-     * @var User $visited
-     * @ORM\ManyToOne(targetEntity="SocialNetwork\API\Entity\User")
-     * @ORM\JoinColumn(name="visited", referencedColumnName="id", nullable=FALSE)
+     * @var integer
+     *
+     * @ORM\Column(name="visited", type="integer")
      */
     private $visited;
 

@@ -4,7 +4,8 @@ namespace SocialNetwork\Bundle\ProfileBundle\Controller;
 
 use SocialNetwork\Bundle\ProfileBundle\Entity\Visitors;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    SocialNetwork\API\Response\ApiResponse;
+    SocialNetwork\API\Response\ApiResponse,
+    SocialNetwork\API\Entity\User;
 
 class ProfileController extends Controller
 {
@@ -21,9 +22,8 @@ class ProfileController extends Controller
             $dbService = $this->get('doctrine.orm.entity_manager');
 
             $user = $dbService->createQueryBuilder()
-                ->select( 'u','f')
+                ->select( 'u' )
                 ->from('SocialNetwork\API\Entity\User', 'u')
-                ->leftJoin('u.follow', 'f')
                 //->leftJoin('f.following', 'uu')
                 ->where("u.uid = ?1")
                 ->setParameter( 1, $uid )
@@ -56,7 +56,7 @@ class ProfileController extends Controller
                     $user['visitors'] = $dbService->createQueryBuilder()
                         ->select( 'v', 'u.uid','u.name' )
                         ->from('SocialNetwork\Bundle\ProfileBundle\Entity\Visitors', 'v')
-                        ->leftJoin('v.visitor', 'u')
+                        ->join('SocialNetwork\API\Entity\User', 'u', 'WITH', 'u.id = v.visitor')
                         ->where("v.visited = ?1")
                         ->andWhere("v.date > ?2")
                         ->setParameter( 1, $me['id'] )
@@ -67,7 +67,7 @@ class ProfileController extends Controller
                         ->getArrayResult();
 
 
-                $user['following'] = empty( $following ) ? false : true;
+                //$user['following'] = empty( $following ) ? false : true;
             }
 
             return $user;
@@ -89,19 +89,17 @@ class ProfileController extends Controller
         }
 
         $user = $dbService->createQueryBuilder()
-            ->select( 'u' )
+            ->select( 'u.id' )
             ->from('SocialNetwork\API\Entity\User', 'u')
             ->where("u.uid = ?1")
             ->setParameter( 1, $params['visited'] )
             ->getQuery()
-            ->getArrayResult();
+            ->getSingleResult();
 
-        $oVisitor = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
-        $oVisited = $dbService->find('SocialNetwork\API\Entity\User', $user[0]['id']);
 
         $oVisitors = new Visitors();
-        $oVisitors->setVisitor( $oVisitor );
-        $oVisitors->setVisited( $oVisited );
+        $oVisitors->setVisitor( $me["id"] );
+        $oVisitors->setVisited( $user['id'] );
         $oVisitors->setDate( time()."000" );
 
         $dbService->persist( $oVisitors );
