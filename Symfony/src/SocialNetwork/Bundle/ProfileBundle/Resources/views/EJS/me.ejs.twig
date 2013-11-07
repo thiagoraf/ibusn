@@ -90,10 +90,7 @@
     <div class="profile-contact-info">
         <% if( API.me.data.id != data.id ) { %>
         <div class="profile-contact-links align-left">
-            <a class="btn btn-link add-as-friend" href="#">
-                <i class="icon-plus-sign bigger-120 green"></i>
-                Adicionar como amigo
-            </a>
+            <a class="btn btn-link manage-person" href="#"></a>
 
             <a class="btn btn-link follow <%= data.following ? 'unfollow-this-person' : 'follow-this-person' %>" href="#">
                 <i class="icon-smile bigger-120 blue"></i>

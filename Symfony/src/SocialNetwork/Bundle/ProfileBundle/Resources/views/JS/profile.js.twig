@@ -40,21 +40,40 @@ oProfile.prototype.profileContainer = function() {
 
     _this.profile.html( API.render("Profile.me", _this.userProfile) );
 
+    if ( _this.userProfile.isFriend ) {
+        _this.profile.find('.manage-person').addClass("remove-friend");
+        _this.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
+    } else {
+        _this.profile.find('.manage-person').addClass("add-as-friend");
+        _this.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
+    }
+
     _this.profile.find('#profile-feed-1').slimScroll({
         height: '250px',
         alwaysVisible : true
     });
 
-    _this.profile.find('.add-as-friend').click(function(){
+    _this.profile.find('.manage-person').click(function(){
 
-        var $result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
+        if ( _this.profile.find('.manage-person.remove-friend').length ) {
+            _this.profile.find('.manage-person').removeClass("remove-friend").addClass("add-as-friend");
+            _this.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
 
-        if ( API.hasError($result) ) {
-            API.notification.notify("Erro",$result.error,"error");
-            return false;
+            API.notification.notify("Parabéns!","Você acaba de desfazer a amizade.","success");
+        } else {
+            var $result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
+
+            if ( API.hasError($result) ) {
+                API.notification.notify("Erro",$result.error,"error");
+                return false;
+            }
+
+            _this.profile.find('.manage-person').removeClass("add-as-friend").addClass("remove-friend");
+            _this.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
+
+            API.notification.notify("Parabéns!","Você acaba de enviar uma solicitação de amizade.","success");
         }
 
-        API.notification.notify("Parabéns!","Você acaba de enviar uma solicitação de amizade.","success");
     });
 
     _this.profile.find('.follow').click(function(){
@@ -80,7 +99,6 @@ oProfile.prototype.profileContainer = function() {
                 API.notification.notify("Erro",result.error(),"error");
                 return false;
             }
-
 
             API.notification.notify("Parabéns!","Você deixou de seguir um usuário.","success");
             $(this).removeClass("unfollow-this-person").addClass("follow-this-person");

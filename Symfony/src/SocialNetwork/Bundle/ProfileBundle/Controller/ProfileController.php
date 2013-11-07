@@ -88,8 +88,27 @@ class ProfileController extends Controller
                         ->getQuery()
                         ->getArrayResult();
 
+                $qb = $dbService->createQueryBuilder();
+                $isFriend = $qb->select( 'f' )
+                    ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
+                    ->where(
+                        $qb->expr()->orX(
+                            $qb->expr()->andX("f.idUserResponse = ?1"),
+                            $qb->expr()->andX("f.idUserRequest = ?2")
+                        ),
+                        $qb->expr()->orX(
+                            $qb->expr()->andX("f.idUserRequest = ?1"),
+                            $qb->expr()->andX("f.idUserResponse = ?2")
+                        )
+                    )
+                    ->andWhere("f.status= 0")
+                    ->setParameter( 1, $me['id'] )
+                    ->setParameter( 2, $user['id'] )
+                    ->getQuery()
+                    ->getArrayResult();
 
                 //$user['following'] = empty( $following ) ? false : true;
+                $user['isFriend'] = empty( $isFriend ) ? false : true;
             }
 
             return $response->setData($user)->render();

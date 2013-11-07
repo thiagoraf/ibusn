@@ -12,10 +12,11 @@
     <file path="/index.html.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383693262888" ignored="false" />
     <file path="/security.yml" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383692753390" ignored="false" />
     <file path="/sidebar.ejs.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383693367355" ignored="false" />
-    <file path="/ProfileController.php" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383794004518" ignored="false" />
+    <file path="/ProfileController.php" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383796015562" ignored="false" />
     <file path="/FriendController.php" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383786409663" ignored="false" />
     <file path="/friends.ejs.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383794811759" ignored="false" />
-    <file path="/profile.js.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383794844882" ignored="false" />
+    <file path="/profile.js.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383796870965" ignored="false" />
+    <file path="/me.ejs.twig" changelist="836be719-3418-4e6a-a889-2cd98945efce" time="1383796223849" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,7 @@
       <file leaf-file-name="ProfileController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="27" selection-start="2157" selection-end="2157" vertical-scroll-proportion="-4.265306">
+            <state line="19" column="5" selection-start="622" selection-end="622" vertical-scroll-proportion="-5.8163266">
               <folding>
                 <element signature="e#65#120#0" expanded="true" />
               </folding>
@@ -46,10 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FriendController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FriendController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Controller/FriendController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="8" selection-start="904" selection-end="1643" vertical-scroll-proportion="-2.632653">
+            <state line="27" column="9" selection-start="894" selection-end="894" vertical-scroll-proportion="0.18065694">
               <folding />
             </state>
           </provider>
@@ -64,6 +65,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="me.ejs.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="63" selection-start="3206" selection-end="3206" vertical-scroll-proportion="-3.0204082">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Friends.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.js.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="profile.js.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="19" selection-start="3939" selection-end="3939" vertical-scroll-proportion="0.2964824">
+            <state line="75" column="0" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,11 +130,12 @@
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/IndexBundle/Resources/views/EJS/sidebar.ejs.twig" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Entity/Visitors.php" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Controller/FriendController.php" />
-        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/friends.ejs.twig" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/friend.ejs.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig" />
         <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig" />
+        <option value="$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Controller/FriendController.php" />
       </list>
     </option>
   </component>
@@ -734,11 +745,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/API/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="20" selection-start="965" selection-end="965" vertical-scroll-proportion="0.765" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialNetwork/API/Controller/ResourcesController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="44" selection-start="355" selection-end="355" vertical-scroll-proportion="0.325" />
@@ -781,21 +787,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="2.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Resources/views/EJS/friend.ejs.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Resources/views/EJS/friend.ejs.twig">
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -809,9 +808,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/EJS/me.ejs.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="63" selection-start="3206" selection-end="3206" vertical-scroll-proportion="-3.0204082">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Entity/Friends.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Controller/ProfileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="27" selection-start="2157" selection-end="2157" vertical-scroll-proportion="-4.265306">
+        <state line="19" column="5" selection-start="622" selection-end="622" vertical-scroll-proportion="-5.8163266">
           <folding>
             <element signature="e#65#120#0" expanded="true" />
           </folding>
@@ -820,14 +840,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/FriendBundle/Controller/FriendController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="904" selection-end="1643" vertical-scroll-proportion="-2.632653">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialNetwork/Bundle/ProfileBundle/Resources/views/JS/profile.js.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="19" selection-start="3939" selection-end="3939" vertical-scroll-proportion="0.2964824">
+        <state line="27" column="9" selection-start="894" selection-end="894" vertical-scroll-proportion="0.18065694">
           <folding />
         </state>
       </provider>

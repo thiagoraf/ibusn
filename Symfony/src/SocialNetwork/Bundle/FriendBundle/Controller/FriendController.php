@@ -45,7 +45,8 @@ class FriendController extends Controller
             ->setParameter( 2, $params['userId'] )
             ->getQuery()
             ->getArrayResult();
-        if( empty($alreadyAdded) ) {
+
+        if( !empty($alreadyAdded) ) {
             return $response->setData(array("error"=>"Você já adicionou este amigo!"))->render();
         }
 
