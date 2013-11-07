@@ -22,16 +22,16 @@ class Friends
     private $id;
 
     /**
-     * @var User $userRequest
-     * @ORM\ManyToOne(targetEntity="SocialNetwork\API\Entity\User")
-     * @ORM\JoinColumn(name="id_user_request", referencedColumnName="id", nullable=FALSE)
+     * @var integer
+     *
+     * @ORM\Column(name="id_user_request", type="integer")
      */
     private $idUserRequest;
 
     /**
-     * @var User $userResponse
-     * @ORM\ManyToOne(targetEntity="SocialNetwork\API\Entity\User")
-     * @ORM\JoinColumn(name="id_user_response", referencedColumnName="id", nullable=FALSE)
+     * @var integer
+     *
+     * @ORM\Column(name="id_user_response", type="integer")
      */
     private $idUserResponse;
 

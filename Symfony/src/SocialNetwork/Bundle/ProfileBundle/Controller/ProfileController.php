@@ -16,8 +16,10 @@ class ProfileController extends Controller
     }
 
     //$oUser = $dbService->getRepository('SocialNetwork\API\Entity\User')->findBy( array("id" => $uid));
-    public function user( $uid ) {
+    public function userAction( $uid )
+    {
         try {
+            $response = new ApiResponse();
             $me = $this->getUser()->getAttributes();
             $dbService = $this->get('doctrine.orm.entity_manager');
 
@@ -42,13 +44,33 @@ class ProfileController extends Controller
                     ->getQuery()
                     ->getArrayResult();
 
-                $following = $dbService->createQueryBuilder()
+                /*$following = $dbService->createQueryBuilder()
                     ->select( 'f' )
                     ->from('SocialNetwork\Bundle\FollowBundle\Entity\Follow', 'f')
                     ->where("f.followed  = ?1")
                     ->andWhere("f.following = ?2")
                     ->setParameter( 1, $user['id'] )
                     ->setParameter( 2, $me['id'] )
+                    ->getQuery()
+                    ->getArrayResult();*/
+
+                $qb = $dbService->createQueryBuilder();
+                $user['friend'] = $qb->select( 'u.name, u.uid' )
+                    ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
+                    ->join('SocialNetwork\API\Entity\User','u', 'WITH', "u.id = f.idUserResponse OR u.id = f.idUserRequest")
+                    ->where(
+                        $qb->expr()->andX(
+                            $qb->expr()->orX(
+                                $qb->expr()->eq("f.idUserResponse", "?1"),
+                                $qb->expr()->eq("f.idUserRequest", "?1")
+                            )
+                        ),
+                        $qb->expr()->andX(
+                                $qb->expr()->neq("u.id","?1")
+                        )
+                    )
+                    ->andWhere("f.status = 1")
+                    ->setParameter( 1, $user['id'] )
                     ->getQuery()
                     ->getArrayResult();
 
@@ -70,7 +92,7 @@ class ProfileController extends Controller
                 //$user['following'] = empty( $following ) ? false : true;
             }
 
-            return $user;
+            return $response->setData($user)->render();
 
         } catch(Exception $e){
             //error
@@ -105,16 +127,6 @@ class ProfileController extends Controller
         $dbService->persist( $oVisitors );
         $dbService->flush();
 
-        return $response->render();
-    }
-
-    public function userAction( $uid )
-    {
-        $response = new ApiResponse();
-
-        $user = $this->user( $uid );
-
-        $response->setData( $user );
         return $response->render();
     }
 

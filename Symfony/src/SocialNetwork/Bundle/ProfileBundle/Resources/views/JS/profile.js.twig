@@ -47,10 +47,10 @@ oProfile.prototype.profileContainer = function() {
 
     _this.profile.find('.add-as-friend').click(function(){
 
-        var result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
+        var $result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
 
-        if ( API.hasError(result) ) {
-            API.notification.notify("Erro",result.error(),"error");
+        if ( API.hasError($result) ) {
+            API.notification.notify("Erro",$result.error,"error");
             return false;
         }
 
@@ -64,7 +64,7 @@ oProfile.prototype.profileContainer = function() {
             var result = API.POST("Follow/follow", {"userId" : _this.userProfile.id});
 
             if ( API.hasError(result) ) {
-                API.notification.notify("Erro",result.error(),"error");
+                API.notification.notify("Erro",result.error,"error");
                 return false;
             }
 
@@ -141,6 +141,6 @@ oProfile.prototype.photoContainer = function() {
 oProfile.prototype.friendContainer = function(){
     var _this = this;
 
-    _this.friend.html( API.render("Friend.friend") );
+    _this.friend.html( API.render("Profile.friend", _this.userProfile.friend) );
 }
 

@@ -24,15 +24,34 @@ class FriendController extends Controller
         $dbService = $this->get('doctrine.orm.entity_manager');
 
         if( $me['id'] == $params['userId'] ) {
-            return $response->setData("Você não pode adicionar você mesmo!")->render();
+            return $response->setData(array("Error"=>"Você não pode adicionar você mesmo!"))->render();
         }
 
-        $oMe = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
-        $oFriend = $dbService->find('SocialNetwork\API\Entity\User', $params['userId']);
+        $qb = $dbService->createQueryBuilder();
+        $alreadyAdded = $qb->select( 'f' )
+            ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
+            ->where(
+                $qb->expr()->orX(
+                    $qb->expr()->andX("f.idUserResponse = ?1"),
+                    $qb->expr()->andX("f.idUserRequest = ?2")
+                ),
+                $qb->expr()->orX(
+                    $qb->expr()->andX("f.idUserRequest = ?1"),
+                    $qb->expr()->andX("f.idUserResponse = ?2")
+                )
+            )
+            ->andWhere("f.status= 0")
+            ->setParameter( 1, $me['id'] )
+            ->setParameter( 2, $params['userId'] )
+            ->getQuery()
+            ->getArrayResult();
+        if( empty($alreadyAdded) ) {
+            return $response->setData(array("error"=>"Você já adicionou este amigo!"))->render();
+        }
 
         $oFriends = new Friends();
-        $oFriends->setIdUserRequest( $oMe );
-        $oFriends->setIdUserResponse( $oFriend );
+        $oFriends->setIdUserRequest( $me["id"] );
+        $oFriends->setIdUserResponse( $params['userId'] );
         $oFriends->setStatus( 0 );
         $dbService->persist( $oFriends );
         $dbService->flush();
@@ -52,32 +71,28 @@ class FriendController extends Controller
         $me = $this->getUser()->getAttributes();
         $dbService = $this->get('doctrine.orm.entity_manager');
 
-        $invites = $dbService->createQueryBuilder()
+        /*$invites = $dbService->createQueryBuilder()
             ->select( 'f' )
             ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
             ->where("f.idUserResponse = ?1")
             ->andWhere("f.status= 0")
             ->setParameter( 1, $me['id'] )
             ->getQuery()
-            ->getArrayResult();
+            ->getArrayResult();*/
 
 
         $friendInvite = $dbService->createQueryBuilder()
             ->select( 'ur.name, f.id' )
             //->from('SocialNetwork\API\Entity\User', 'u')
             ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
-            ->leftJoin('f.idUserRequest', 'ur')
-            ->where("f.idUserRequest = ur.id")
+            ->leftJoin('SocialNetwork\API\Entity\User', 'ur','WITH' , 'ur.id = f.idUserRequest')
             ->andwhere("f.idUserResponse = ?1")
             ->andWhere("f.status = 0")
             ->setParameter( 1, $me['id'] )
             ->getQuery()
             ->getArrayResult();
 
-
-
-        $response->setData( $friendInvite );
-        return $response->render();
+        return $response->setData( $friendInvite )->render();
     }
 
     public function acceptFriendAction() {
