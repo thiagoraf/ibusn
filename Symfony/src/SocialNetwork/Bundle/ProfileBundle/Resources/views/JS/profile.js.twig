@@ -53,6 +53,24 @@ oProfile.prototype.profileContainer = function() {
         alwaysVisible : true
     });
 
+    _this.profile.find(".add-photo-perfil").click(function(){
+        _this.profile.find("#add-photo-perfil input[name=photoPerfil]").click();
+     });
+
+    _this.profile.find("input[name=photoPerfil]").change(function(){
+
+        _this.profile.find("#add-photo-perfil").ajaxSubmit(function( e ){
+
+            if ( API.hasError(e) ) {
+                API.notification.notify("Erro", e.error, "error");
+                return false;
+            }
+
+            API.notification.notify("Parabéns", e.success, "success");
+            return false
+        });
+    });
+
     _this.profile.find('.manage-person').click(function(){
 
         if ( _this.profile.find('.manage-person.remove-friend').length ) {
@@ -115,6 +133,7 @@ oProfile.prototype.albumContainer = function(){
     _this.albums.find(".list-albums").html( API.render("Profile.list.albums", _this.userProfile) );
 
     _this.albums.find(".list-albums button.open").click(function(){
+
         _this.container.find(".tab-content #albums").removeClass("active");
         _this.container.find(".tab-content #photos").addClass("active");
         _this.photoContainer();
@@ -139,6 +158,7 @@ oProfile.prototype.albumContainer = function(){
     });
 }
 
+
 oProfile.prototype.photoContainer = function() {
     var _this = this;
 
@@ -150,9 +170,6 @@ oProfile.prototype.photoContainer = function() {
     });
 
     _this.photos.find(".list-photos").html( API.render("Profile.list.photos"));
-
-
-
 }
 
 

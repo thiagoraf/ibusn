@@ -40,9 +40,19 @@
 <div id="user-profile-1" class="user-profile row-fluid">
 <div class="span3 center">
     <div>
-											<span class="profile-picture">
-												<img id="avatar" class="editable" alt="Alex's Avatar" src="assets/avatars/profile-pic.jpg" />
-											</span>
+
+
+        <div>
+            <span class="profile-picture">
+                <img id="avatar" class="editable" alt="Alex's Avatar" src="<%= API.dataUrl %>bundles/socialnetworkindex/avatars/profile-pic.jpg" />
+            </span>
+            <form id="add-photo-perfil" method="post" enctype="multipart/form-data" action="<%= API.dataUrl %>Profile/photo">
+                <input type="file" name="photoPerfil" style="display: none">
+            </form>
+
+        </div>
+        <button class="btn add-photo-perfil">Selecionar foto</button>
+        <button class="btn btn-danger">Remover foto</button>
 
         <div class="space-4"></div>
 

@@ -21,3 +21,9 @@ social_network_album:
     defaults: { _controller: SocialNetworkProfileBundle:Album:add }
     requirements:
             _method:  POST
+
+social_network_album:
+    pattern:  /photo
+    defaults: { _controller: SocialNetworkProfileBundle:Photo:add }
+    requirements:
+            _method:  POST

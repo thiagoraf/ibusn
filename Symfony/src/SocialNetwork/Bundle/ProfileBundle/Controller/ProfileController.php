@@ -44,16 +44,6 @@ class ProfileController extends Controller
                     ->getQuery()
                     ->getArrayResult();
 
-                /*$following = $dbService->createQueryBuilder()
-                    ->select( 'f' )
-                    ->from('SocialNetwork\Bundle\FollowBundle\Entity\Follow', 'f')
-                    ->where("f.followed  = ?1")
-                    ->andWhere("f.following = ?2")
-                    ->setParameter( 1, $user['id'] )
-                    ->setParameter( 2, $me['id'] )
-                    ->getQuery()
-                    ->getArrayResult();*/
-
                 $qb = $dbService->createQueryBuilder();
                 $user['friend'] = $qb->select( 'u.name, u.uid' )
                     ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
@@ -93,12 +83,14 @@ class ProfileController extends Controller
                     ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
                     ->where(
                         $qb->expr()->orX(
-                            $qb->expr()->andX("f.idUserResponse = ?1"),
-                            $qb->expr()->andX("f.idUserRequest = ?2")
-                        ),
-                        $qb->expr()->orX(
-                            $qb->expr()->andX("f.idUserRequest = ?1"),
-                            $qb->expr()->andX("f.idUserResponse = ?2")
+                            $qb->expr()->andX(
+                                $qb->expr()->eq("f.idUserResponse","?1"),
+                                $qb->expr()->eq("f.idUserRequest","?2")
+                            ),
+                            $qb->expr()->andX(
+                                $qb->expr()->eq("f.idUserRequest","?1"),
+                                $qb->expr()->eq("f.idUserResponse","?2")
+                            )
                         )
                     )
                     ->andWhere("f.status= 0")

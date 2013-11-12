@@ -104,7 +104,15 @@ class FriendController extends Controller
 
         $oFriends = $dbService->find('SocialNetwork\Bundle\FriendBundle\Entity\Friends', $params['inviteId']);
 
-        if( $oFriends->getIdUserResponse()->getId() != $me['id'] ) {
+        $friendInvite = $dbService->createQueryBuilder()
+            ->select( 'f.idUserResponse' )
+            ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
+            ->where("f.id = ?1")
+            ->setParameter( 1, $params['inviteId'] )
+            ->getQuery()
+            ->getSingleResult();
+
+        if( $friendInvite['idUserResponse'] != $me['id'] ) {
             return $response->setData("Erro de permissão!")->render();
         }
         $oFriends->setStatus( 1 );
