@@ -1,9 +1,9 @@
-<% var albums = data.album; %>
+<% var albums = data.albums; %>
 
 <div class="span12" style="margin: 0 0 15px 0;">
     <% var count = 1;%>
     <% $.each(albums, function(i, album){ %>
-    <div class="span3">
+    <div class="span3 album" album="<%= album.title %>">
         <div class="thumb-pad">
             <div class="thumbnail">
                 <img src="img/stock_images/700x430_1.jpg" alt="">

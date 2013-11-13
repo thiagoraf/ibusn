@@ -1,18 +1,42 @@
+<% var photos = data; %>
 
-<div class="span3">
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_1.jpg" alt=""></a>
+        <% console.log(photos) %>
+
+<div class="span12" style="margin: 0 0 15px 0;">
+    <% var count = 1;%>
+    <% $.each(photos, function(i, photo){ %>
+    <div class="span3 photo">
+        <div class="thumb-pad">
+            <a href="#" class="thumbnail"><img style="width: 280px; height: 200px;" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt=""></a>
+        </div>
     </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_5.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_8.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_4.jpg" alt=""></a>
-    </div>
+    <% if( count == 4 ) { count = 0; %>
 </div>
+<div class="span12" style="margin: 0 0 15px 0;">
+    <% } count++; %>
+
+    <% }) %>
+</div>
+
+
+<!-- <div class="span3">
+     <% $.each(photos, function(i, photo){ %>
+         <div class="thumb-pad">
+             <a href="#" class="thumbnail"><img src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt=""></a>
+         </div>
+     <% }) %>
+
+     <div class="thumb-pad">
+         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_5.jpg" alt=""></a>
+     </div>
+     <div class="thumb-pad">
+         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_8.jpg" alt=""></a>
+     </div>
+     <div class="thumb-pad">
+         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_4.jpg" alt=""></a>
+     </div>-->
+    </div>
+<!--
 <div class="span3">
     <div class="thumb-pad">
         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_2.jpg" alt=""></a>
@@ -55,3 +79,4 @@
         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_7.jpg" alt=""></a>
     </div>
 </div>
+-->

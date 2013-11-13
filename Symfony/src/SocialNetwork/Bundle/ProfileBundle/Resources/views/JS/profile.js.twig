@@ -136,7 +136,7 @@ oProfile.prototype.albumContainer = function(){
 
         _this.container.find(".tab-content #albums").removeClass("active");
         _this.container.find(".tab-content #photos").addClass("active");
-        _this.photoContainer();
+        _this.photoContainer( $(this).parents(".album").attr("album") );
     });
 
     _this.albums.find(".create-album").click(function( event ){
@@ -151,25 +151,63 @@ oProfile.prototype.albumContainer = function(){
         }
 
         API.notification.notify("Album","Criado com sucesso!","success");
+
+
         _this.userProfile = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
         _this.albums.find(".list-albums").fadeOut().html( API.render("Profile.list.albums", _this.userProfile)).fadeIn();
         _this.albums.find("input[name=album]").val("");
+
+        _this.albums.find(".list-albums button.open").click(function(){
+
+            _this.container.find(".tab-content #albums").removeClass("active");
+            _this.container.find(".tab-content #photos").addClass("active");
+            _this.photoContainer();
+        });
 
     });
 }
 
 
-oProfile.prototype.photoContainer = function() {
+oProfile.prototype.photoContainer = function( album ) {
     var _this = this;
 
-    _this.photos.html( API.render("Profile.photos") );
+    _this.photos.html( API.render("Profile.photos", {album: album}) );
 
     _this.photos.find("button.return").click(function(){
         _this.container.find(".tab-content #photos").removeClass("active");
         _this.container.find(".tab-content #albums").addClass("active");
     });
 
-    _this.photos.find(".list-photos").html( API.render("Profile.list.photos"));
+    var $result = API.GET("Profile/album/"+album+"/"+_this.userProfile.id );
+
+    _this.photos.find(".list-photos").html( API.render("Profile.list.photos", $result));
+
+    _this.photos.find(".add-photo").click(function(){
+        _this.photos.find("form[name=addPhoto] input[name=photo]").click();
+    });
+
+    _this.photos.find("input[name=photo]").change(function(){
+
+        _this.photos.find("form[name=addPhoto]").ajaxSubmit(function( e ){
+
+
+            _this.photos.find("input[name=photo]").val("");
+
+            if ( API.hasError(e) ) {
+                API.notification.notify("Erro", e.error, "error");
+                return false;
+            }
+
+            API.notification.notify("Parabéns", e.success, "success");
+
+            var $result = API.GET("Profile/album/"+ e.album +"/"+e.user );
+
+            _this.photos.find(".list-photos").html( API.render("Profile.list.photos", $result));
+
+            return false
+        });
+    });
+
 }
 
 

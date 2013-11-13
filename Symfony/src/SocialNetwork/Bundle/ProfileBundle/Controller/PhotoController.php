@@ -10,17 +10,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 class PhotoController extends Controller
 {
 
+    const PATH_USER_GET = "bundles/socialnetworkindex/users";
+    const PATH_USER_POST = "../src/SocialNetwork/Bundle/IndexBundle/Resources/public/users";
+
     public function addAction()
     {
         $response = new ApiResponse();
         $me = $this->getUser()->getAttributes();
-        $params = $this->getRequest()->request->all();
-        $dbService = $this->get('doctrine.orm.entity_manager');
+
+        if ( $_FILES['photo']['type'] == 'image/jpeg' )
+            $extension = ".jpg";
+
+        if ( move_uploaded_file( $_FILES['photo']['tmp_name'], self::PATH_USER_POST."/{$me['id']}/albums/{$_POST['album']}/".base64_encode(time().rand  ()).$extension  ) )
+        {
+            return $response->setData(array('success'=>'Foto inserida com sucesso!','album'=>$_POST['album'], 'user' => $me['id']))->render();
+        }
+
+
+
+
+        /*$dbService = $this->get('doctrine.orm.entity_manager');
 
         $f = fopen($_FILES['photoPerfil']['tmp_name'],'r');
 
-
-        return $response->setData(fgetcsv($f, 0, ';') )->render();
+;
 
         if( isset( $params["album"] ) )
             $oAlbum = $dbService->find('SocialNetwork\Bundle\ProfileBundle\Entity\Album', $params["album"]);
@@ -57,10 +70,32 @@ class PhotoController extends Controller
 
         } catch(Exception $e){
             return $response->setData( array( $e->getMessage() ) )->render();
+        }*/
+
+
+    }
+
+    public function listPhotoByAlbumAction( $albumName , $userId )
+    {
+        $response = new ApiResponse();
+
+        $album = opendir(self::PATH_USER_GET."/{$userId}/albums/{$albumName}");
+
+        $listPhotos = array();
+
+        while (($photo = readdir($album)) !== false) {
+            if( in_array( $photo, array('.','..') ) )
+                continue;
+
+            $listPhotos[] = array('name' => $photo, 'album' => $albumName, 'userId' => $userId);
         }
 
-        return $response->render();
+        closedir($album);
+
+
+        return $response->setData($listPhotos)->render();
     }
+
 
 
 

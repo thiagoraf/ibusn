@@ -1,13 +1,17 @@
-<form name="addPhoto">
-    <button class="btn btn-purple btn-small" style="height: 43px; margin: 0 0 10px 0;">
+<% var album = data.album %>
+<form name="addPhoto" method="post" enctype="multipart/form-data" action="<%= API.dataUrl %>Profile/photo">
+    <button type="button" class="btn btn-purple add-photo btn-small" style="height: 43px; margin: 0 0 10px 0;">
         <i class="icon-cloud-upload icon-2"></i>
         Imagem
     </button>
-    <input type="text" name="title" id="form-field-1" style="height: 35px; width: 300px" placeholder="Titulo">
 
-    <button type="button" class="btn btn-primary add-img" style="margin: 0 0 10px 0;"  >
+    <input type="hidden" name="album" value="<%= album %>" >
+
+    <input type="file" name="photo" style="display: none">
+
+   <!-- <button type="button" class="btn btn-primary add-img" style="margin: 0 0 10px 0;"  >
         <i class="icon-save bigger-125"></i>
-    </button>
+    </button> -->
 
     <button type="button" class="btn btn-info return" style="margin: 0 0 10px 0; float: right"  >
         <i class="icon-book bigger-125"></i>

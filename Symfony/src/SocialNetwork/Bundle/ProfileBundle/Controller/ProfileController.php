@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 class ProfileController extends Controller
 {
 
+    const PATH_USER_GET = "bundles/socialnetworkindex/users";
+    const PATH_USER_POST = "../src/SocialNetwork/Bundle/IndexBundle/Resources/public/users";
+
     public function indexAction( $uid )
     {
         return $this->render('SocialNetworkIndexBundle:Default:index.html.twig', array("data" => "profile/$uid"));
@@ -36,13 +39,23 @@ class ProfileController extends Controller
                 $user = $user[0];
                 unset( $user['password'] );
 
-                $user['album'] = $dbService->createQueryBuilder()
+                /*$user['album'] = $dbService->createQueryBuilder()
                     ->select( 'a' )
                     ->from('SocialNetwork\Bundle\ProfileBundle\Entity\Album', 'a')
                     ->leftJoin('a.owner', 'u')
                     ->orderBy('a.id','DESC')
                     ->getQuery()
                     ->getArrayResult();
+                */
+
+                $albums = opendir(self::PATH_USER_GET."/{$user['id']}/albums");
+                while (($album = readdir($albums)) !== false) {
+                    if( in_array( $album, array('.','..') ) )
+                        continue;
+
+                    $user['albums'][]['title'] = $album;
+                }
+                closedir($albums);
 
                 $qb = $dbService->createQueryBuilder();
                 $user['friend'] = $qb->select( 'u.name, u.uid' )
