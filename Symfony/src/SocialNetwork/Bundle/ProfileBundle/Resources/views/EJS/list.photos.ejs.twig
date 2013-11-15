@@ -1,82 +1,54 @@
-<% var photos = data; %>
-
-        <% console.log(photos) %>
-
+<% var photos = data.photos; var user = data.user %>
+<!--
 <div class="span12" style="margin: 0 0 15px 0;">
     <% var count = 1;%>
     <% $.each(photos, function(i, photo){ %>
-    <div class="span3 photo">
-        <div class="thumb-pad">
-            <a href="#" class="thumbnail"><img style="width: 280px; height: 200px;" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt=""></a>
+    <div class="span3 photo ace-thumbnails">
+        <div class="thumb-pad ">
+            <a href="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" title="Photo Title" data-rel="colorbox">
+                <img style="width: 280px; height: 200px;" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt="">
+
+            </a>
         </div>
     </div>
+
+
     <% if( count == 4 ) { count = 0; %>
 </div>
 <div class="span12" style="margin: 0 0 15px 0;">
     <% } count++; %>
 
     <% }) %>
-</div>
+</div>-->
 
 
-<!-- <div class="span3">
-     <% $.each(photos, function(i, photo){ %>
-         <div class="thumb-pad">
-             <a href="#" class="thumbnail"><img src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt=""></a>
-         </div>
-     <% }) %>
+<ul class="ace-thumbnails">
 
-     <div class="thumb-pad">
-         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_5.jpg" alt=""></a>
-     </div>
-     <div class="thumb-pad">
-         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_8.jpg" alt=""></a>
-     </div>
-     <div class="thumb-pad">
-         <a href="#" class="thumbnail"><img src="img/stock_images/700x430_4.jpg" alt=""></a>
-     </div>-->
-    </div>
-<!--
-<div class="span3">
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_2.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_3.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_6.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_7.jpg" alt=""></a>
-    </div>
-</div>
-<div class="span3">
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_5.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_8.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_1.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_2.jpg" alt=""></a>
-    </div>
-</div>
-<div class="span3">
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_2.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_6.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_3.jpg" alt=""></a>
-    </div>
-    <div class="thumb-pad">
-        <a href="#" class="thumbnail"><img src="img/stock_images/700x430_7.jpg" alt=""></a>
-    </div>
-</div>
--->
+    <% $.each(photos, function(i, photo){ %>
+        <li style="margin: 13px" photo="<%= photo.name %>" album="<%= photo.album %>" >
+            <a href="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" data-rel="colorbox">
+                <img style="width: 280px; height: 200px;" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" alt="">
+
+            </a>
+            <div class="tools tools-top">
+                <a href="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= photo.userId %>/albums/<%= photo.album %>/<%= photo.name %>" data-rel="colorbox">
+                    <i class="icon-zoom-in"></i>
+                </a>
+
+                <% if( API.me.data.id == user.id ) { %>
+                    <a href="#" class="add-cover">
+                        <i class="icon-book"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="icon-user"></i>
+                    </a>
+
+                    <a href="#" class="remove">
+                        <i class="icon-remove red"></i>
+                    </a>
+                <% } %>
+            </div>
+        </li>
+    <% }) %>
+</ul>

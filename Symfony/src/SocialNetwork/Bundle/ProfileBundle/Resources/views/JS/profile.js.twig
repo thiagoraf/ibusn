@@ -1,104 +1,112 @@
 oProfile = function( container, data ){
     this.data = data;
     this.container = container;
+    this.navbar = $("div#navbar");
 
     this.load();
 }
 
 oProfile.prototype.load = function(){
-    var _this = this;
+    var self = this;
 
-    _this.userProfile = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
+    self.userProfile = self.data ? API.GET( "Profile/profile/"+self.data ) : false;
 
-    if ( _this.userProfile && $.isEmptyObject( _this.userProfile ) ) {
-        _this.container.html( API.render('Profile.not.found') );
+    if ( self.userProfile && $.isEmptyObject( self.userProfile ) ) {
+        self.container.html( API.render('Profile.not.found') );
         return false;
     }
 
-    var result = API.POST("Profile/visitor", {visited: _this.data});
+    var result = API.POST("Profile/visitor", {visited: self.data});
 
     if ( API.hasError( result ) ) {
         // falar o erro
         return false;
     }
 
-    _this.container.html( API.render('Profile.profile') );
+    self.container.html( API.render('Profile.profile') );
 
-    _this.profile = _this.container.find("#profile");
-    _this.albums  = _this.container.find("#albums");
-    _this.friend  = _this.container.find("#friend");
-    _this.photos  = _this.container.find("#photos");
+    self.profile = self.container.find("#profile");
+    self.albums  = self.container.find("#albums");
+    self.friend  = self.container.find("#friend");
+    self.photos  = self.container.find("#photos");
 
-    _this.profileContainer();
-    _this.albumContainer();
-    _this.friendContainer();
+    self.profileContainer();
+    self.albumContainer();
+    self.friendContainer();
 
 }
 
 oProfile.prototype.profileContainer = function() {
-    var _this = this;
+    var self = this;
 
-    _this.profile.html( API.render("Profile.me", _this.userProfile) );
+    self.profile.html( API.render("Profile.me", self.userProfile) );
 
-    if ( _this.userProfile.isFriend ) {
-        _this.profile.find('.manage-person').addClass("remove-friend");
-        _this.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
+    if ( self.userProfile.isFriend ) {
+        self.profile.find('.manage-person').addClass("remove-friend");
+        self.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
     } else {
-        _this.profile.find('.manage-person').addClass("add-as-friend");
-        _this.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
+        self.profile.find('.manage-person').addClass("add-as-friend");
+        self.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
     }
 
-    _this.profile.find('#profile-feed-1').slimScroll({
+    self.profile.find('#profile-feed-1').slimScroll({
         height: '250px',
         alwaysVisible : true
     });
 
-    _this.profile.find(".add-photo-perfil").click(function(){
-        _this.profile.find("#add-photo-perfil input[name=photoPerfil]").click();
+    self.profile.find(".add-photo-perfil").click(function(){
+        if (self.userProfile.id == API.me.data.id )
+            self.profile.find("#add-photo-perfil input[name=photoProfile]").click();
+        else
+            self.profile.find(".add-photo-perfil").colorbox({href: self.profile.find(".add-photo-perfil img").attr("src")});
      });
 
-    _this.profile.find("input[name=photoPerfil]").change(function(){
+    self.profile.find("input[name=photoProfile]").change(function(){
 
-        _this.profile.find("#add-photo-perfil").ajaxSubmit(function( e ){
+        self.profile.find("#add-photo-perfil").ajaxSubmit(function( e ){
 
             if ( API.hasError(e) ) {
                 API.notification.notify("Erro", e.error, "error");
                 return false;
             }
 
+            API.me.data = API.GET( 'API/user/me');
+            self.profile.find(".add-photo-perfil").fadeOut().html('<img id="avatar" class="editable" alt="Alexs Avatar" src="'+ API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile +'" />').fadeIn();
+            self.navbar.find(".nav-user-photo").fadeOut().attr('src', API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile).fadeIn();
+
             API.notification.notify("Parabéns", e.success, "success");
             return false
         });
     });
 
-    _this.profile.find('.manage-person').click(function(){
+    self.profile.find('.manage-person').click(function(){
 
-        if ( _this.profile.find('.manage-person.remove-friend').length ) {
-            _this.profile.find('.manage-person').removeClass("remove-friend").addClass("add-as-friend");
-            _this.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
+        if ( self.profile.find('.manage-person.remove-friend').length ) {
+            self.profile.find('.manage-person').removeClass("remove-friend").addClass("add-as-friend");
+            self.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
 
             API.notification.notify("Parabéns!","Você acaba de desfazer a amizade.","success");
         } else {
-            var $result = API.POST("Friend/friend", {"userId" : _this.userProfile.id});
+            var $result = API.POST("Friend/friend", {"userId" : self.userProfile.id});
 
             if ( API.hasError($result) ) {
                 API.notification.notify("Erro",$result.error,"error");
                 return false;
             }
 
-            _this.profile.find('.manage-person').removeClass("add-as-friend").addClass("remove-friend");
-            _this.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
+            self.profile.find('.manage-person').removeClass("add-as-friend").addClass("remove-friend");
+            self.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
 
             API.notification.notify("Parabéns!","Você acaba de enviar uma solicitação de amizade.","success");
         }
 
     });
 
-    _this.profile.find('.follow').click(function(){
+    self.profile.find('.follow').click(function(){
 
         if( $(this).hasClass("follow-this-person") ) {
 
-            var result = API.POST("Follow/follow", {"userId" : _this.userProfile.id});
+            var result = API.POST("Follow/follow", {"userId" : self.userProfile.id});
 
             if ( API.hasError(result) ) {
                 API.notification.notify("Erro",result.error,"error");
@@ -111,7 +119,7 @@ oProfile.prototype.profileContainer = function() {
 
         } else if ( $(this).hasClass("unfollow-this-person") ) {
 
-            var result = API.DELETE("Follow/unfollow/"+ _this.userProfile.id);
+            var result = API.DELETE("Follow/unfollow/"+ self.userProfile.id);
 
             if ( API.hasError(result) ) {
                 API.notification.notify("Erro",result.error(),"error");
@@ -127,21 +135,21 @@ oProfile.prototype.profileContainer = function() {
 }
 
 oProfile.prototype.albumContainer = function(){
-    var _this = this;
+    var self = this;
 
-    _this.albums.html( API.render("Profile.albums") );
-    _this.albums.find(".list-albums").html( API.render("Profile.list.albums", _this.userProfile) );
+    self.albums.html( API.render("Profile.albums") );
+    self.albums.find(".list-albums").html( API.render("Profile.list.albums", self.userProfile) );
 
-    _this.albums.find(".list-albums button.open").click(function(){
+    self.albums.find(".list-albums button.open").click(function(){
 
-        _this.container.find(".tab-content #albums").removeClass("active");
-        _this.container.find(".tab-content #photos").addClass("active");
-        _this.photoContainer( $(this).parents(".album").attr("album") );
+        self.container.find(".tab-content #albums").removeClass("active");
+        self.container.find(".tab-content #photos").addClass("active");
+        self.photoContainer( $(this).parents(".album").attr("album") );
     });
 
-    _this.albums.find(".create-album").click(function( event ){
+    self.albums.find(".create-album").click(function( event ){
 
-        var form = API.form( _this.albums.find("form[name=createAlbum]") );
+        var form = API.form( self.albums.find("form[name=createAlbum]") );
 
         var result = API.POST("Profile/album", form);
 
@@ -152,16 +160,15 @@ oProfile.prototype.albumContainer = function(){
 
         API.notification.notify("Album","Criado com sucesso!","success");
 
+        self.userProfile = self.data ? API.GET( "Profile/profile/"+self.data ) : false;
+        self.albums.find(".list-albums").fadeOut().html( API.render("Profile.list.albums", self.userProfile)).fadeIn();
+        self.albums.find("input[name=album]").val("");
 
-        _this.userProfile = _this.data ? API.GET( "Profile/profile/"+_this.data ) : false;
-        _this.albums.find(".list-albums").fadeOut().html( API.render("Profile.list.albums", _this.userProfile)).fadeIn();
-        _this.albums.find("input[name=album]").val("");
+        self.albums.find(".list-albums button.open").click(function(){
 
-        _this.albums.find(".list-albums button.open").click(function(){
-
-            _this.container.find(".tab-content #albums").removeClass("active");
-            _this.container.find(".tab-content #photos").addClass("active");
-            _this.photoContainer();
+            self.container.find(".tab-content #albums").removeClass("active");
+            self.container.find(".tab-content #photos").addClass("active");
+            self.photoContainer( $(this).parents(".album").attr("album") );
         });
 
     });
@@ -169,29 +176,65 @@ oProfile.prototype.albumContainer = function(){
 
 
 oProfile.prototype.photoContainer = function( album ) {
-    var _this = this;
+    var self = this;
 
-    _this.photos.html( API.render("Profile.photos", {album: album}) );
+    self.photos.html( API.render("Profile.photos", {album: album}) );
 
-    _this.photos.find("button.return").click(function(){
-        _this.container.find(".tab-content #photos").removeClass("active");
-        _this.container.find(".tab-content #albums").addClass("active");
+    self.photos.find("button.return").click(function(){
+        self.container.find(".tab-content #photos").removeClass("active");
+        self.container.find(".tab-content #albums").addClass("active");
     });
 
-    var $result = API.GET("Profile/album/"+album+"/"+_this.userProfile.id );
+    var $result = API.GET("Profile/album/"+album+"/"+self.userProfile.id );
 
-    _this.photos.find(".list-photos").html( API.render("Profile.list.photos", $result));
+    self.photos.find(".list-photos").html( API.render("Profile.list.photos", {photos: $result, user: self.userProfile}));
 
-    _this.photos.find(".add-photo").click(function(){
-        _this.photos.find("form[name=addPhoto] input[name=photo]").click();
+    self.photos.find('li .remove').click(function(){
+        var album = $(this).parents("li").attr("album");
+        var photo = $(this).parents("li").attr("photo");
+
+        var $result = API.DELETE( 'Profile/photo/'+album+'/'+photo );
+
+
+        if( API.hasError( $result ) )
+        {
+
+            return false;
+        }
+
+        API.notification.notify("Parabéns","Uma foto foi excluida!","success");
+
+        $(this).parents("li").remove();
     });
 
-    _this.photos.find("input[name=photo]").change(function(){
 
-        _this.photos.find("form[name=addPhoto]").ajaxSubmit(function( e ){
+    self.photos.find('li .add-cover').click(function(){
+        var album = $(this).parents("li").attr("album");
+        var photo = $(this).parents("li").attr("photo");
+
+        var $result = API.PUT( 'Profile/album/cover/'+album+'/'+photo );
 
 
-            _this.photos.find("input[name=photo]").val("");
+        if( API.hasError( $result ) )
+        {
+
+            return false;
+        }
+
+        API.notification.notify("Parabéns","A foto foi adicionada como capa do album!","success");
+    });
+
+    self.photos.find('.ace-thumbnails [data-rel="colorbox"]').colorbox();
+
+    self.photos.find(".add-photo").click(function(){
+        self.photos.find("form[name=addPhoto] input[name=photo]").click();
+    });
+
+    self.photos.find("input[name=photo]").change(function(){
+
+        self.photos.find("form[name=addPhoto]").ajaxSubmit(function( e ){
+
+            self.photos.find("input[name=photo]").val("");
 
             if ( API.hasError(e) ) {
                 API.notification.notify("Erro", e.error, "error");
@@ -200,11 +243,51 @@ oProfile.prototype.photoContainer = function( album ) {
 
             API.notification.notify("Parabéns", e.success, "success");
 
+
+
             var $result = API.GET("Profile/album/"+ e.album +"/"+e.user );
 
-            _this.photos.find(".list-photos").html( API.render("Profile.list.photos", $result));
+            self.photos.find(".list-photos").html( API.render("Profile.list.photos", {photos: $result, user: self.userProfile} ));
 
-            return false
+
+            self.photos.find('.ace-thumbnails [data-rel="colorbox"]').colorbox();
+
+            self.photos.find('li .remove').click(function(){
+                var album = $(this).parents("li").attr("album");
+                var photo = $(this).parents("li").attr("photo");
+
+                var $result = API.DELETE( 'Profile/photo/'+album+'/'+photo );
+
+
+                if( API.hasError( $result ) )
+                {
+
+                    return false;
+                }
+
+                API.notification.notify("Parabéns","Uma foto foi excluida!","success");
+
+                $(this).parents("li").remove();
+            });
+
+            self.photos.find('li .add-cover').click(function(){
+                var album = $(this).parents("li").attr("album");
+                var photo = $(this).parents("li").attr("photo");
+
+                var $result = API.PUT( 'Profile/album/cover/'+album+'/'+photo );
+
+
+                if( API.hasError( $result ) )
+                {
+
+                    return false;
+                }
+
+                self.userProfile = self.data ? API.GET( "Profile/profile/"+self.data ) : false;
+                API.notification.notify("Parabéns","A foto foi adicionada como capa do album!","success");
+            });
+
+            return false;
         });
     });
 
@@ -212,8 +295,8 @@ oProfile.prototype.photoContainer = function( album ) {
 
 
 oProfile.prototype.friendContainer = function(){
-    var _this = this;
+    var self = this;
 
-    _this.friend.html( API.render("Profile.friend", _this.userProfile.friend) );
+    self.friend.html( API.render("Profile.friend", self.userProfile.friend) );
 }
 

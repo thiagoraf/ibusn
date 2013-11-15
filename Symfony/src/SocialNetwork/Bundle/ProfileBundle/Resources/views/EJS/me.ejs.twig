@@ -12,7 +12,7 @@
         <i class="icon-umbrella bigger-120 blue"></i>
         Clique na imagem abaixo ou nos campos do perfil para edita-los
     </div>
-
+<!--
     <div class="pull-right">
         <span class="green middle bolder">Escolher perfil: &nbsp;</span>
 
@@ -31,7 +31,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <div class="hr dotted"></div>
@@ -43,16 +43,14 @@
 
 
         <div>
-            <span class="profile-picture">
-                <img id="avatar" class="editable" alt="Alex's Avatar" src="<%= API.dataUrl %>bundles/socialnetworkindex/avatars/profile-pic.jpg" />
+            <span class="profile-picture add-photo-perfil">
+                <img id="avatar" class="editable" alt="Alex's Avatar" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= data.id %>/albums/Fotos de perfil/<%= data.photoProfile %>" />
             </span>
-            <form id="add-photo-perfil" method="post" enctype="multipart/form-data" action="<%= API.dataUrl %>Profile/photo">
-                <input type="file" name="photoPerfil" style="display: none">
+            <form id="add-photo-perfil" method="post" enctype="multipart/form-data" action="<%= API.dataUrl %>Profile/photoProfile">
+                <input type="file" name="photoProfile" style="display: none">
             </form>
 
         </div>
-        <button class="btn add-photo-perfil">Selecionar foto</button>
-        <button class="btn btn-danger">Remover foto</button>
 
         <div class="space-4"></div>
 

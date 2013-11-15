@@ -14,6 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 class ResourcesController extends Controller
 {
 
+    const PATH_USER_GET = "bundles/socialnetworkindex/users";
+    const PATH_USER_POST = "../src/SocialNetwork/Bundle/IndexBundle/Resources/public/users";
+
     /**
      * Load EJS file and parse the twig syntax to translate
      *
@@ -75,9 +78,20 @@ class ResourcesController extends Controller
             $user['uid'] = $oUser->getUsername();
         }
 
+        $folderProfile = opendir(self::PATH_USER_POST . "/{$user['id']}/albums/Fotos de perfil");
+
+        while (($photoProfile = readdir($folderProfile)) !== false) {
+
+            if( strrpos($photoProfile, 'active_') !== false ) {
+                $user['photoProfile'] = $photoProfile;
+                break;
+            }
+        }
+
+        closedir($folderProfile);
+
         $user['roles'] =  $oUser->getRoles();
-        $response->setData( $user );
-        return $response->render();
+        return $response->setData( $user )->render();
     }
 
     public function addUserAction()
@@ -95,7 +109,15 @@ class ResourcesController extends Controller
         $dbService->persist( $oUser );
         $dbService->flush();
 
-        return $response->render();
+        if ( $userId = $oUser->getId() )
+        {
+            if ( !mkdir( self::PATH_USER_POST."/{$userId}/albums/Fotos de perfil", 0777, true) )
+            {
+                return $response->setData(array("error"=>"Algum erro ocorreu!"))->render();
+            }
+        }
+
+        return $response->setData(array( $oUser->getId() ))->render();
     }
 
 }

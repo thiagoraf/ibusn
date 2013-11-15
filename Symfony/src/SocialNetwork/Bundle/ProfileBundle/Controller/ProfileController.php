@@ -39,21 +39,41 @@ class ProfileController extends Controller
                 $user = $user[0];
                 unset( $user['password'] );
 
-                /*$user['album'] = $dbService->createQueryBuilder()
-                    ->select( 'a' )
-                    ->from('SocialNetwork\Bundle\ProfileBundle\Entity\Album', 'a')
-                    ->leftJoin('a.owner', 'u')
-                    ->orderBy('a.id','DESC')
-                    ->getQuery()
-                    ->getArrayResult();
-                */
+                $folderProfile = opendir(self::PATH_USER_POST . "/{$user['id']}/albums/Fotos de perfil");
 
-                $albums = opendir(self::PATH_USER_GET."/{$user['id']}/albums");
+                while (($photoProfile = readdir($folderProfile)) !== false) {
+
+                    if( strrpos($photoProfile, 'active_') !== false ) {
+                        $user['photoProfile'] = $photoProfile;
+                        break;
+                    }
+                }
+
+                closedir($folderProfile);
+
+
+                $albums = opendir(self::PATH_USER_POST."/{$user['id']}/albums");
+
                 while (($album = readdir($albums)) !== false) {
                     if( in_array( $album, array('.','..') ) )
                         continue;
 
-                    $user['albums'][]['title'] = $album;
+                    $photos = opendir(self::PATH_USER_POST."/{$user['id']}/albums/$album");
+                    $cover = "";
+
+                    while (($covers = readdir($photos)) !== false) {
+                        if( in_array( $covers, array('.','..') ) )
+                            continue;
+
+                        if( strrpos($covers, 'cover_') !== false ) {
+                            $cover = $covers;
+                            break;
+                        }
+
+                    }
+
+
+                    $user['albums'][] = array('title'=> $album,'cover' => $cover );
                 }
                 closedir($albums);
 

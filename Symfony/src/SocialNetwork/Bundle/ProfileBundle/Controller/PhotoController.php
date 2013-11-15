@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 class PhotoController extends Controller
 {
 
+
+    /*
+     * VALIDAR SEGURANÇA AQUI!
+     * */
     const PATH_USER_GET = "bundles/socialnetworkindex/users";
     const PATH_USER_POST = "../src/SocialNetwork/Bundle/IndexBundle/Resources/public/users";
 
@@ -20,59 +24,26 @@ class PhotoController extends Controller
 
         if ( $_FILES['photo']['type'] == 'image/jpeg' )
             $extension = ".jpg";
+        else
+            $extension = ".jpg";
 
         if ( move_uploaded_file( $_FILES['photo']['tmp_name'], self::PATH_USER_POST."/{$me['id']}/albums/{$_POST['album']}/".base64_encode(time().rand  ()).$extension  ) )
         {
             return $response->setData(array('success'=>'Foto inserida com sucesso!','album'=>$_POST['album'], 'user' => $me['id']))->render();
         }
 
+        return $response->render();
 
+    }
 
+    public function deleteAction($album, $photo)
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
 
-        /*$dbService = $this->get('doctrine.orm.entity_manager');
+        unlink(self::PATH_USER_POST."/{$me['id']}/albums/{$album}/{$photo}");
 
-        $f = fopen($_FILES['photoPerfil']['tmp_name'],'r');
-
-;
-
-        if( isset( $params["album"] ) )
-            $oAlbum = $dbService->find('SocialNetwork\Bundle\ProfileBundle\Entity\Album', $params["album"]);
-        else {
-            $album = $dbService->createQueryBuilder()
-                ->select('a.id')
-                ->from('SocialNetwork\Bundle\ProfileBundle\Entity\Album','a')
-                ->where('a.title = ?1')
-                ->setParameter(1, 'Fotos de perfil')
-                ->getQuery()
-                ->getArrayResult();
-
-            if( empty($album) ) {
-                $dbService2 = $this->get('doctrine.orm.entity_manager');
-                $oAlbum = new Album();
-                $oAlbum->setCreated(time().'000');
-                $oAlbum->setOwner( $me['id'] );
-                $oAlbum->setTitle("Fotos de perfil");
-                $dbService2->persist( $oAlbum );
-                $dbService2->flush();
-            } else
-                $oAlbum = $dbService->find('SocialNetwork\Bundle\ProfileBundle\Entity\Album', $album['id']);
-        }
-
-        try {
-
-            $oPhoto = new Photo();
-            $oPhoto->setSource( $params['source'] ) ;
-            $oPhoto->setAlbum( $oAlbum );
-            $oPhoto->setTimestamp( time()."000" );
-
-            $dbService->persist( $oPhoto );
-            $dbService->flush();
-
-        } catch(Exception $e){
-            return $response->setData( array( $e->getMessage() ) )->render();
-        }*/
-
-
+        return $response->render();
     }
 
     public function listPhotoByAlbumAction( $albumName , $userId )
@@ -96,8 +67,59 @@ class PhotoController extends Controller
         return $response->setData($listPhotos)->render();
     }
 
+    public function addPhotoProfileAction()
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
+
+        if( !file_exists(self::PATH_USER_POST . "/". $me['id']) )
+            mkdir(self::PATH_USER_POST."/{$me['id']}/albums/Fotos de perfil", 0777, true);
 
 
+        $path = self::PATH_USER_POST."/{$me['id']}/albums/Fotos de perfil";
+        $folderProfile = opendir($path);
 
+        while (($photoProfile = readdir($folderProfile)) !== false) {
+
+            if( in_array( $photoProfile, array('.','..') ) )
+                continue;
+
+            if( strrpos($photoProfile, 'active_') !== false ) {
+                $newName = str_replace('active_', '', $photoProfile);
+
+                rename("{$path}/{$photoProfile}","{$path}/{$newName}");
+            }
+
+        }
+
+        //move_uploaded_file( $_FILES['photoProfile']['tmp_name'], $path.'/active_'.$_FILES['photoProfile']['name'] );
+
+        if(move_uploaded_file( $_FILES['photoProfile']['tmp_name'], $path.'/active_'.$_FILES['photoProfile']['name'] ))
+        {
+            return $response->setData(array('success'=>'Foto enviada com sucesso!'))->render();
+        }
+
+        return $response->setData(array($path.'/active_'.$_FILES['photoProfile']['name']))->render();
+    }
+
+    public function currentPhotoProfileAction()
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
+
+        $folderProfile = opendir( self::PATH_USER_POST . "/{$me['id']}/albums/Fotos do profile");
+
+        while (($photoProfile = readdir($folderProfile)) !== false)
+        {
+            if( strrpos($photoProfile, 'active_') )
+            {
+                closedir($folderProfile);
+                return $response->setData(array("photo" => $photoProfile))->render();
+            }
+        }
+
+        closedir($folderProfile);
+        return $response->render();
+    }
 
 }

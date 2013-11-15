@@ -51,6 +51,32 @@ class AlbumController extends Controller
         return $response->render();
     }
 
+    public function addCoverAction($album, $photo)
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
+
+        $path = self::PATH_USER_POST."/{$me['id']}/albums/$album";
+        $folderProfile = opendir($path);
+
+        while (($photoProfile = readdir($folderProfile)) !== false) {
+
+            if( in_array( $photoProfile, array('.','..') ) )
+                continue;
+
+            if( strrpos($photoProfile, 'cover_') !== false ) {
+                $newName = str_replace('cover_', '', $photoProfile);
+
+                rename("{$path}/{$photoProfile}","{$path}/{$newName}");
+            }
+
+        }
+
+        rename(self::PATH_USER_POST."/{$me['id']}/albums/$album/$photo",self::PATH_USER_POST."/{$me['id']}/albums/$album/cover_$photo");
+
+        return $response->render();
+    }
+
 
 
 

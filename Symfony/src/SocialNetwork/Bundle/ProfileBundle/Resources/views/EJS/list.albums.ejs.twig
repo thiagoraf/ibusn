@@ -1,4 +1,4 @@
-<% var albums = data.albums; %>
+<% var albums = data.albums; var user = data; %>
 
 <div class="span12" style="margin: 0 0 15px 0;">
     <% var count = 1;%>
@@ -6,10 +6,9 @@
     <div class="span3 album" album="<%= album.title %>">
         <div class="thumb-pad">
             <div class="thumbnail">
-                <img src="img/stock_images/700x430_1.jpg" alt="">
+                <img style="height: 200px;width: 300px;" src="<% if ( album.cover ) { %><%= API.dataUrl %>bundles/socialnetworkindex/users/<%= user.id %>/albums/<%= album.title %>/<%= album.cover %><% } else { %> <%= API.dataUrl %>bundles/socialnetworkindex/img/cover.png <% } %>" alt="">
                 <div class="caption">
                     <h5><%= album.title %></h5>
-                    <p>Quisque nulla. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque.</p>
                     <button type="button" class="btn open">Abrir</button>
                 </div>
             </div>

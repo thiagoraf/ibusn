@@ -22,11 +22,35 @@ social_network_album:
     requirements:
             _method:  POST
 
-social_network_photo:
+social_network_album_cover:
+    pattern:  /album/cover/{album}/{photo}
+    defaults: { _controller: SocialNetworkProfileBundle:Album:addCover }
+    requirements:
+            _method:  PUT
+
+social_network_photo_add:
     pattern:  /photo
     defaults: { _controller: SocialNetworkProfileBundle:Photo:add }
     requirements:
             _method:  POST
+
+social_network_photo_delete:
+    pattern:  /photo/{album}/{photo}
+    defaults: { _controller: SocialNetworkProfileBundle:Photo:delete }
+    requirements:
+            _method:  DELETE
+
+social_network_photo_profile:
+    pattern:  /photoProfile
+    defaults: { _controller: SocialNetworkProfileBundle:Photo:addPhotoProfile }
+    requirements:
+            _method:  POST
+
+social_network_current_photo_profile:
+    pattern:  /currentPhotoProfile
+    defaults: { _controller: SocialNetworkProfileBundle:Photo:currentPhotoProfile }
+    requirements:
+           _method:  GET
 
 social_network_photo_by_album:
     pattern:  /album/{albumName}/{userId}
