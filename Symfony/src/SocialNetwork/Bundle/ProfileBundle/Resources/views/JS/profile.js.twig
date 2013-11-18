@@ -71,8 +71,10 @@ oProfile.prototype.profileContainer = function() {
             }
 
             API.me.data = API.GET( 'API/user/me');
-            self.profile.find(".add-photo-perfil").fadeOut().html('<img id="avatar" class="editable" alt="Alexs Avatar" src="'+ API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile +'" />').fadeIn();
-            self.navbar.find(".nav-user-photo").fadeOut().attr('src', API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile).fadeIn();
+            self.profile.find(".add-photo-perfil").fadeOut();
+            self.profile.find(".add-photo-perfil").html('<img id="avatar" class="editable" alt="Alexs Avatar" src="'+ API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile +'" />').fadeIn();
+            self.navbar.find(".nav-user-photo").fadeOut();
+            self.navbar.find(".nav-user-photo").attr('src', API.dataUrl +'bundles/socialnetworkindex/users/'+ API.me.data.id +'/albums/Fotos de perfil/'+ API.me.data.photoProfile).fadeIn();
 
             API.notification.notify("Parabéns", e.success, "success");
             return false
@@ -82,6 +84,13 @@ oProfile.prototype.profileContainer = function() {
     self.profile.find('.manage-person').click(function(){
 
         if ( self.profile.find('.manage-person.remove-friend').length ) {
+            var $result = API.POST("Friend/friend", {"userId" : self.userProfile.id});
+
+            if ( API.hasError($result) ) {
+                API.notification.notify("Erro",$result.error,"error");
+                return false;
+            }
+
             self.profile.find('.manage-person').removeClass("remove-friend").addClass("add-as-friend");
             self.profile.find('.manage-person').html("<i class='icon-plus-sign bigger-120 green'></i> Adicionar como amigo");
 
@@ -93,9 +102,6 @@ oProfile.prototype.profileContainer = function() {
                 API.notification.notify("Erro",$result.error,"error");
                 return false;
             }
-
-            self.profile.find('.manage-person').removeClass("add-as-friend").addClass("remove-friend");
-            self.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
 
             API.notification.notify("Parabéns!","Você acaba de enviar uma solicitação de amizade.","success");
         }
@@ -174,7 +180,6 @@ oProfile.prototype.albumContainer = function(){
     });
 }
 
-
 oProfile.prototype.photoContainer = function( album ) {
     var self = this;
 
@@ -222,6 +227,16 @@ oProfile.prototype.photoContainer = function( album ) {
         }
 
         API.notification.notify("Parabéns","A foto foi adicionada como capa do album!","success");
+        self.userProfile = self.data ? API.GET( "Profile/profile/"+self.data ) : false;
+
+        self.albums.find(".list-albums").html( API.render("Profile.list.albums", self.userProfile) );
+
+        self.albums.find(".list-albums button.open").click(function(){
+
+            self.container.find(".tab-content #albums").removeClass("active");
+            self.container.find(".tab-content #photos").addClass("active");
+            self.photoContainer( $(this).parents(".album").attr("album") );
+        });
     });
 
     self.photos.find('.ace-thumbnails [data-rel="colorbox"]').colorbox();

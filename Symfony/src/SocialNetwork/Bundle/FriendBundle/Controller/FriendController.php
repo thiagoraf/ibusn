@@ -32,12 +32,14 @@ class FriendController extends Controller
             ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
             ->where(
                 $qb->expr()->orX(
-                    $qb->expr()->andX("f.idUserResponse = ?1"),
-                    $qb->expr()->andX("f.idUserRequest = ?2")
-                ),
-                $qb->expr()->orX(
-                    $qb->expr()->andX("f.idUserRequest = ?1"),
-                    $qb->expr()->andX("f.idUserResponse = ?2")
+                    $qb->expr()->andX(
+                        $qb->expr()->eq("f.idUserResponse","?1"),
+                        $qb->expr()->eq("f.idUserRequest","?2")
+                    ),
+                    $qb->expr()->andX(
+                        $qb->expr()->eq("f.idUserRequest","?1"),
+                        $qb->expr()->eq("f.idUserResponse","?2")
+                    )
                 )
             )
             ->andWhere("f.status= 0")
@@ -47,7 +49,7 @@ class FriendController extends Controller
             ->getArrayResult();
 
         if( !empty($alreadyAdded) ) {
-            return $response->setData(array("error"=>"Você já adicionou este amigo!"))->render();
+            return $response->setData(array("error"=>"Uma solicitação de amizade tinha sido enviada!"))->render();
         }
 
         $oFriends = new Friends();
@@ -71,16 +73,6 @@ class FriendController extends Controller
         $response = new ApiResponse();
         $me = $this->getUser()->getAttributes();
         $dbService = $this->get('doctrine.orm.entity_manager');
-
-        /*$invites = $dbService->createQueryBuilder()
-            ->select( 'f' )
-            ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
-            ->where("f.idUserResponse = ?1")
-            ->andWhere("f.status= 0")
-            ->setParameter( 1, $me['id'] )
-            ->getQuery()
-            ->getArrayResult();*/
-
 
         $friendInvite = $dbService->createQueryBuilder()
             ->select( 'ur.name, f.id' )

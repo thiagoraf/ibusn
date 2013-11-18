@@ -51,7 +51,6 @@ class ProfileController extends Controller
 
                 closedir($folderProfile);
 
-
                 $albums = opendir(self::PATH_USER_POST."/{$user['id']}/albums");
 
                 while (($album = readdir($albums)) !== false) {
@@ -72,13 +71,12 @@ class ProfileController extends Controller
 
                     }
 
-
                     $user['albums'][] = array('title'=> $album,'cover' => $cover );
                 }
                 closedir($albums);
 
                 $qb = $dbService->createQueryBuilder();
-                $user['friend'] = $qb->select( 'u.name, u.uid' )
+                $user['friend'] = $qb->select( 'u.id, u.name, u.uid' )
                     ->from('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f')
                     ->join('SocialNetwork\API\Entity\User','u', 'WITH', "u.id = f.idUserResponse OR u.id = f.idUserRequest")
                     ->where(
@@ -96,6 +94,24 @@ class ProfileController extends Controller
                     ->setParameter( 1, $user['id'] )
                     ->getQuery()
                     ->getArrayResult();
+
+
+
+                foreach( $user['friend'] as $i => $friend )
+                {
+                    $folderProfile = opendir(self::PATH_USER_POST . "/{$friend['id']}/albums/Fotos de perfil");
+
+                    while (($photoProfile = readdir($folderProfile)) !== false) {
+
+                        if( strrpos($photoProfile, 'active_') !== false ) {
+                            $user['friend'][$i]['photoProfile'] = "/{$friend['id']}/albums/Fotos de perfil/".$photoProfile;
+                            break;
+                        }
+                    }
+
+                    closedir($folderProfile);
+                }
+
 
                 if( $me['uid'] == $uid)
                     $user['visitors'] = $dbService->createQueryBuilder()
@@ -126,7 +142,7 @@ class ProfileController extends Controller
                             )
                         )
                     )
-                    ->andWhere("f.status= 0")
+                    ->andWhere("f.status = 1")
                     ->setParameter( 1, $me['id'] )
                     ->setParameter( 2, $user['id'] )
                     ->getQuery()

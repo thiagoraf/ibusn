@@ -6,13 +6,13 @@
         <div class="inline position-relative">
             <div class="user">
                 <a href="#">
-                    <img src="assets/avatars/avatar4.png" alt="Bob Doe's avatar">
+                    <img src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= friend.photoProfile %>" alt="Bob Doe's avatar">
                 </a>
             </div>
 
             <div class="body">
                 <div class="name">
-                    <a href="#">
+                    <a href="<%= API.dataUrl %>Profile/<%= friend.name %>">
                         <span class="user-status status-online"></span>
                         <%= friend.name %>
                     </a>
