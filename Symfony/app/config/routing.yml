@@ -1,3 +1,6 @@
+social_network_group:
+    resource: "@SocialNetworkGroupBundle/Resources/config/routing.yml"
+    prefix:   /Group
 
 social_network_follow:
     resource: "@SocialNetworkFollowBundle/Resources/config/routing.yml"

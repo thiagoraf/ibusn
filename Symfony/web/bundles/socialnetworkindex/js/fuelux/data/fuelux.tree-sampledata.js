@@ -92,24 +92,12 @@ tree_data['pets']['additionalParameters'] = {
 
 var treeDataSource = new DataSourceTree({data: tree_data});
 
-
-
-
-
-
-
-
-
-
-
 var tree_data_2 = {
-	'pictures' : {name: 'Pictures', type: 'folder', 'icon-class':'red'}	,
+	'pictures' : {name: 'Sistema operacionais', type: 'folder', 'icon-class':'red'}	,
 	'music' : {name: 'Music', type: 'folder', 'icon-class':'orange'}	,
 	'video' : {name: 'Video', type: 'folder', 'icon-class':'blue'}	,
 	'documents' : {name: 'Documents', type: 'folder', 'icon-class':'green'}	,
-	'backup' : {name: 'Backup', type: 'folder'}	,
-	'readme' : {name: '<i class="icon-file-text grey"></i> ReadMe.txt', type: 'item'},
-	'manual' : {name: '<i class="icon-book blue"></i> Manual.html', type: 'item'}
+	'backup' : {name: 'Backup', type: 'folder'}
 }
 tree_data_2['music']['additionalParameters'] = {
 	'children' : [
@@ -157,7 +145,7 @@ tree_data_2['pictures']['additionalParameters']['children']['camera']['additiona
 
 tree_data_2['documents']['additionalParameters'] = {
 	'children' : [
-		{name: '<i class="icon-file-text red"></i> document1.pdf', type: 'item'},
+		{name: '<i class="icon-file-text red"></i> document1.doc', type: 'item'},
 		{name: '<i class="icon-file-text grey"></i> document2.doc', type: 'item'},
 		{name: '<i class="icon-file-text grey"></i> document3.doc', type: 'item'},
 		{name: '<i class="icon-file-text red"></i> document4.pdf', type: 'item'},

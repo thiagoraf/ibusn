@@ -29,10 +29,12 @@ oProfile.prototype.load = function(){
     self.albums  = self.container.find("#albums");
     self.friend  = self.container.find("#friend");
     self.photos  = self.container.find("#photos");
+    self.groups  = self.container.find("#groups");
 
     self.profileContainer();
     self.albumContainer();
     self.friendContainer();
+    self.groupContainer();
 
 }
 
@@ -213,6 +215,25 @@ oProfile.prototype.photoContainer = function( album ) {
     });
 
 
+    self.photos.find("li .add-as-perfil").click(function(){
+        var album = $(this).parents("li").attr("album");
+        var photo = $(this).parents("li").attr("photo");
+
+        var $result = API.PUT( 'Profile/change/photo/profile/'+photo );
+
+
+        if( API.hasError( $result ) )
+        {
+
+            return false;
+        }
+
+        API.notification.notify("Parabéns","A foto foi inserida como perfil!","success");
+
+        self.profile.find(".add-photo-perfil img").attr("src", API.dataUrl+"bundles/socialnetworkindex/users/"+ API.me.data.id +"/albums/Fotos de perfil/active_"+photo);
+
+    });
+
     self.photos.find('li .add-cover').click(function(){
         var album = $(this).parents("li").attr("album");
         var photo = $(this).parents("li").attr("photo");
@@ -314,4 +335,14 @@ oProfile.prototype.friendContainer = function(){
 
     self.friend.html( API.render("Profile.friend", self.userProfile.friend) );
 }
+
+
+oProfile.prototype.groupContainer = function(){
+    var self = this;
+
+    self.groups.html( API.render("Profile.groups") );
+    self.groups.find(".list-groups").html( API.render("Profile.list.groups", self.userProfile) );
+
+}
+
 

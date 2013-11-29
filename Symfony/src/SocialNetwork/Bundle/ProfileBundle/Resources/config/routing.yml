@@ -57,3 +57,9 @@ social_network_photo_by_album:
     defaults: { _controller: SocialNetworkProfileBundle:Photo:listPhotoByAlbum }
     requirements:
             _method:  GET
+
+social_network_change_photo_profile:
+    pattern: /change/photo/profile/{photo}
+    defaults: { _controller: SocialNetworkProfileBundle:Photo:changePhotoProfile }
+    requirements:
+            _method:  PUT

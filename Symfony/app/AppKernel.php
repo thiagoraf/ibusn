@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
             new SocialNetwork\Bundle\FriendBundle\SocialNetworkFriendBundle(),
             new SocialNetwork\Bundle\FollowBundle\SocialNetworkFollowBundle(),
+            new SocialNetwork\Bundle\GroupBundle\SocialNetworkGroupBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

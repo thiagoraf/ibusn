@@ -8,44 +8,48 @@ oIndex = function( data ){
 }
 
 oIndex.prototype.load = function(){
-    var _this = this;
+    var self = this;
 
     /*
     * TODO: Tentar fazer de maneira diferente!
     * Essa condi��o serve para verificar se algo foi informado na URL
     * EX: Profile/thiago
     * */
-     if ( _this.data ) {
-        var data = _this.data.indexOf("/") != -1 ? _this.data.split("/") : [_this.data];
+     if ( self.data ) {
+        var data = self.data.indexOf("/") != -1 ? self.data.split("/") : [self.data];
         if ( data[0] == 'profile' ) {
             API.getJS( "Profile.profile" , function() {
-                _this.profile = new oProfile( _this.container, data[1] );
+                self.profile = new oProfile( self.container, data[1] );
             });
         } else if ( data[0] == 'friend' ) {
             API.getJS( "Friend.friend" , function() {
-                _this.friend = new oFriend( _this.container );
+                self.friend = new oFriend( self.container );
+            });
+        } else if ( data[0] == 'group' ) {
+            API.getJS( "Group.group" , function() {
+                self.group = new oGroup( self.container, data[1] );
             });
         }
 
     } else {
         API.getJS( 'Home.home' , function() {
-            _this.home = new oHome( _this.container );
+            self.home = new oHome( self.container );
         });
     }
 
-   _this.loadNavbar();
-   _this.loadSidebar();
+   self.loadNavbar();
+   self.loadSidebar();
 }
 
 oIndex.prototype.loadNavbar = function() {
-    var _this = this;
+    var self = this;
 
     var invites = API.GET("Friend/friend/invite");
 
 
-    _this.navbar.html( API.render('Index.navbar', invites) );
+    self.navbar.html( API.render('Index.navbar', invites) );
 
-    _this.navbar.find("ul.friend-invite .accept").click(function(){
+    self.navbar.find("ul.friend-invite .accept").click(function(){
 
         var result = API.PUT("Friend/friend/accept", {'inviteId': $(this).parents("li").attr("invite-id")});
 
@@ -56,10 +60,10 @@ oIndex.prototype.loadNavbar = function() {
 
         $(this).parents("li").find("span.badge").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
         $(this).parents("li").first().remove();
-        _this.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        self.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
         // TODO: falar de deu tudo certo!
     });
-    _this.navbar.find("ul.friend-invite .decline").click(function(){
+    self.navbar.find("ul.friend-invite .decline").click(function(){
 
         var result = API.DELETE("Friend/friend/decline/"+$(this).parents("li").attr("invite-id"));
 
@@ -69,30 +73,30 @@ oIndex.prototype.loadNavbar = function() {
         }
         $(this).parents("li").find("span.badge").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
         $(this).parents("li").first().remove();
-        _this.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
+        self.navbar.find("ul.friend-invite .nav-header span").html(parseInt($(this).parents("li").find("span.badge").text()) - 1);
         // TODO: falar de deu tudo certo!
     });
 }
 
 oIndex.prototype.loadSidebar = function() {
-    var _this = this;
+    var self = this;
 
-    _this.sidebar.html( API.render('Index.sidebar') );
+    self.sidebar.html( API.render('Index.sidebar') );
 
-    _this.sidebar.find('#nav-list a.home').click( function(){
+    self.sidebar.find('#nav-list a.home').click( function(){
         API.getJS( 'Home.home' , function() {
-            _this.home = new oHome( _this.container );
+            self.home = new oHome( self.container );
         });
     })
 
-    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function(){
+    self.sidebar.find('#sidebar-shortcuts button.profile').click( function(){
         location.href = API.dataUrl+"Profile/"+API.me.data.uid;
     });
 
-    _this.sidebar.find('#sidebar-shortcuts button.profile').click( function() {
+    self.sidebar.find('#sidebar-shortcuts button.profile').click( function() {
         
         
     });
 
-    _this.sidebar.find(".sidebar-shortcuts-large").find("button").tooltip();
+    self.sidebar.find(".sidebar-shortcuts-large").find("button").tooltip();
 }

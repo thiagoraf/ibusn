@@ -9,8 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 
 class PhotoController extends Controller
 {
-
-
     /*
      * VALIDAR SEGURANÇA AQUI!
      * */
@@ -65,6 +63,32 @@ class PhotoController extends Controller
 
 
         return $response->setData($listPhotos)->render();
+    }
+
+    public function changePhotoProfileAction( $photo )
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
+
+        $path = self::PATH_USER_POST."/{$me['id']}/albums/Fotos de perfil";
+        $folderProfile = opendir($path);
+
+        while (($photoProfile = readdir($folderProfile)) !== false) {
+
+            if( in_array( $photoProfile, array('.','..') ) )
+                continue;
+
+            if( strrpos($photoProfile, 'active_') !== false ) {
+                $newName = str_replace('active_', '', $photoProfile);
+
+                rename("{$path}/{$photoProfile}","{$path}/{$newName}");
+            }
+
+        }
+
+        rename("{$path}/{$photo}","{$path}/active_{$photo}");
+
+        return $response->render();
     }
 
     public function addPhotoProfileAction()
