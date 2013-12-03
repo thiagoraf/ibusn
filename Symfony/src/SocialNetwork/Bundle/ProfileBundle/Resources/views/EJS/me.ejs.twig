@@ -1,4 +1,6 @@
 <% var data = data ? data : API.me.data; %>
+<% data.registered = new Date( parseInt(data.registered) ).toString("dd/MM/yyyy"); %>
+<% data.age = new Date( parseInt(data.age) ).toString("dd/MM/yyyy"); %>
 
 <div class="span12">
 <!--PAGE CONTENT BEGINS-->
@@ -40,8 +42,6 @@
 <div id="user-profile-1" class="user-profile row-fluid">
 <div class="span3 center">
     <div>
-
-
         <div>
             <span class="profile-picture add-photo-perfil">
                 <img id="avatar" class="editable" alt="Alex's Avatar" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= data.id %>/albums/Fotos de perfil/<%= data.photoProfile %>" />
@@ -59,7 +59,7 @@
                 <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
                     <i class="icon-circle light-green middle"></i>
                     &nbsp;
-                    <span class="white middle bigger-120"><%= data.name %></span>
+                    <span class="white middle bigger-120 user-name"><%= data.name %></span>
                 </a>
 
                 <ul class="align-left dropdown-menu dropdown-caret dropdown-lighter">
@@ -159,10 +159,10 @@
 
 <div class="profile-user-info profile-user-info-striped">
     <div class="profile-info-row">
-        <div class="profile-info-name"> Usuário </div>
+        <div class="profile-info-name"> Nome </div>
 
         <div class="profile-info-value">
-            <span class="editable" id="username">  <%= data.uid %>  </span>
+            <span class="editable" id="name">  <%= data.name %>  </span>
         </div>
     </div>
 
@@ -177,10 +177,10 @@
     </div>
 
     <div class="profile-info-row">
-        <div class="profile-info-name"> Idade </div>
+        <div class="profile-info-name"> Data de nascimento </div>
 
         <div class="profile-info-value">
-            <span class="editable" id="age">20</span>
+            <span class="editable" id="age"><%= data.age %></span>
         </div>
     </div>
 
@@ -188,23 +188,16 @@
         <div class="profile-info-name"> Cadastrado em </div>
 
         <div class="profile-info-value">
-            <span class="editable" id="signup">20/06/2010</span>
+            <span class="editable" id="signup"><%= data.registered %></span>
         </div>
     </div>
 
-    <div class="profile-info-row">
-        <div class="profile-info-name"> Último login</div>
-
-        <div class="profile-info-value">
-            <span class="editable" id="login">3 hours ago</span>
-        </div>
-    </div>
 
     <div class="profile-info-row">
         <div class="profile-info-name"> Sobre </div>
 
         <div class="profile-info-value">
-            <span class="editable" id="about">Editable as WYSIWYG</span>
+            <span class="editable" id="about"><%= data.aboutMe %></span>
         </div>
     </div>
    <% if ( API.me.data.uid == data.uid ) { %>
@@ -227,7 +220,7 @@
 
 <div class="space-20"></div>
 
-<div class="widget-box transparent">
+<!--<div class="widget-box transparent">
 <div class="widget-header widget-header-small">
     <h4 class="blue smaller">
         <i class="icon-rss orange"></i>
@@ -500,6 +493,7 @@
         <i class="icon-on-right icon-arrow-right"></i>
     </a>
 </div>
+-->
 </div>
 </div>
 </div>
@@ -573,12 +567,12 @@
                 <div class="profile-info-name"> Username </div>
 
                 <div class="profile-info-value">
-                    <span>alexdoe</span>
+                    <span >alexdoe</span>
                 </div>
             </div>
 
             <div class="profile-info-row">
-                <div class="profile-info-name"> Location </div>
+                <div class="profile-info-name"> Endereço </div>
 
                 <div class="profile-info-value">
                     <i class="icon-map-marker light-orange bigger-110"></i>
@@ -588,7 +582,7 @@
             </div>
 
             <div class="profile-info-row">
-                <div class="profile-info-name"> Age </div>
+                <div class="profile-info-name"> Idade </div>
 
                 <div class="profile-info-value">
                     <span>38</span>
@@ -596,18 +590,10 @@
             </div>
 
             <div class="profile-info-row">
-                <div class="profile-info-name"> Joined </div>
+                <div class="profile-info-name"> Se cadastrou dia </div>
 
                 <div class="profile-info-value">
                     <span>20/06/2010</span>
-                </div>
-            </div>
-
-            <div class="profile-info-row">
-                <div class="profile-info-name"> Last Online </div>
-
-                <div class="profile-info-value">
-                    <span>3 hours ago</span>
                 </div>
             </div>
         </div>

@@ -132,4 +132,32 @@ class FriendController extends Controller
         return $response->render();
     }
 
+    public function deleteFriendAction( $userId )
+    {
+        $response = new ApiResponse();
+        $dbService = $this->get('doctrine.orm.entity_manager');
+        $me = $this->getUser()->getAttributes();
+
+        $qb = $dbService->createQueryBuilder();
+        $qb->delete('SocialNetwork\Bundle\FriendBundle\Entity\Friends', 'f');
+        $qb->where(
+            $qb->expr()->orX(
+                $qb->expr()->andX(
+                    $qb->expr()->eq("f.idUserResponse","?1"),
+                    $qb->expr()->eq("f.idUserRequest","?2")
+                ),
+                $qb->expr()->andX(
+                    $qb->expr()->eq("f.idUserRequest","?1"),
+                    $qb->expr()->eq("f.idUserResponse","?2")
+                )
+            )
+        );
+        $qb->setParameter(1, $me['id']);
+        $qb->setParameter(2, $userId)
+            ->getQuery()
+            ->execute();
+
+        return $response->render();
+    }
+
 }

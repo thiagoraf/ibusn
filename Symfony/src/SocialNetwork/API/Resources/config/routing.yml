@@ -20,3 +20,15 @@ API_user_add:
     defaults: { _controller: SocialNetworkAPI:Resources:addUser }
     requirements:
         _method:  POST
+
+API_user_edit:
+    pattern:  /editUser
+    defaults: { _controller: SocialNetworkAPI:Resources:editUser }
+    requirements:
+        _method:  PUT
+
+API_user_search:
+    pattern:  /searchUser/{keyWord}
+    defaults: { _controller: SocialNetworkAPI:Resources:searchUser }
+    requirements:
+            _method:  GET

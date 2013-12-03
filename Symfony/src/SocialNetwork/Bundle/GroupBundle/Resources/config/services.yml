@@ -1,0 +1,7 @@
+parameters:
+#    social_network_group.example.class: SocialNetwork\Bundle\GroupBundle\Example
+
+services:
+#    social_network_group.example:
+#        class: %social_network_group.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

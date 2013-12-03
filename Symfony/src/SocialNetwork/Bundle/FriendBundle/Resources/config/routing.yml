@@ -33,3 +33,9 @@ social_network_friend_decline:
     defaults: { _controller: SocialNetworkFriendBundle:Friend:declineFriend }
     requirements:
         _method:  DELETE
+
+social_network_friend_delete:
+    pattern:  /friend/{userId}
+    defaults: { _controller: SocialNetworkFriendBundle:Friend:deleteFriend }
+    requirements:
+        _method:  DELETE

@@ -1,0 +1,3 @@
+social_network_group_homepage:
+    pattern:  /{groupId}
+    defaults: { _controller: SocialNetworkGroupBundle:Group:index }

@@ -43,6 +43,45 @@ oProfile.prototype.profileContainer = function() {
 
     self.profile.html( API.render("Profile.me", self.userProfile) );
 
+    $.fn.editable.defaults.mode = 'inline';
+    $.fn.editableform.loading = "<div class='editableform-loading'><i class='light-blue icon-2x icon-spinner icon-spin'></i></div>";
+    $.fn.editableform.buttons = '<button type="submit" class="btn btn-info editable-submit"><i class="icon-ok icon-white"></i></button>'+
+        '<button type="button" class="btn editable-cancel"><i class="icon-remove"></i></button>';
+    $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
+
+
+    if ( API.me.data.id == self.userProfile.id ) {
+        self.profile.find('#name').editable({
+            type: 'text',
+            name: "name",
+            url: API.dataUrl+'API/editUser',
+            send: 'always',
+            success : function(data){
+                $(".user-name").text( data.value );
+            }
+        });
+
+        self.profile.find('#about').editable({
+            type: 'textarea',
+            name: "aboutMe",
+            url: API.dataUrl+'API/editUser',
+            send: 'always',
+            success : function(data){
+            }
+        });
+
+        self.profile.find('#age').editable({
+            type: 'date',
+            name: "age",
+            format: 'dd/mm/yyyy',
+            url: API.dataUrl+'API/editUser',
+            send: 'always',
+            success : function(data){
+            }
+        });
+
+    }
+
     if ( self.userProfile.isFriend ) {
         self.profile.find('.manage-person').addClass("remove-friend");
         self.profile.find('.manage-person').html("<i class='icon-remove bigger-120 green'></i> Desfazer amizade");
@@ -86,7 +125,7 @@ oProfile.prototype.profileContainer = function() {
     self.profile.find('.manage-person').click(function(){
 
         if ( self.profile.find('.manage-person.remove-friend').length ) {
-            var $result = API.POST("Friend/friend", {"userId" : self.userProfile.id});
+            var $result = API.DELETE("Friend/friend/"+self.userProfile.id);
 
             if ( API.hasError($result) ) {
                 API.notification.notify("Erro",$result.error,"error");

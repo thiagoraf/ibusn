@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/colorbox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/socialnetworkindex/css/bootstrap-editable.css') }}" />
 
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery/jquery-1.9.1.js') }}"> </script>
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery/jquery.form.js') }}"> </script>
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/bootstrap/js/bootstrap.js') }}"> </script>
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery.pnotify/jquery.pnotify.js') }}"> </script>
+
+    <script type="text/javascript" src="{{ asset('bundles/socialnetworkindex/js/date-pt-BR.js') }}"> </script>
+    <script type="text/javascript" src="{{ asset('bundles/socialnetworkindex/js/jquery.dateFormat.js') }}"> </script>
 
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/jquery.rest/jquery.rest.js') }}"> </script>
     <script type="text/javascript" src="{{ asset('bundles/socialnetworkapi/plugins/ejs/ejs.js') }}"> </script>
@@ -70,7 +74,7 @@
             <div class="nav-search" id="nav-search">
                 <form class="form-search" />
 							<span class="input-icon">
-								<input type="text" placeholder="Procurar ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<input type="text" placeholder="Procurar ..." class="input-small nav-search-field" id="nav-search-field" autocomplete="off" />
 								<i class="icon-search nav-search-icon"></i>
 							</span>
                 </form>
@@ -122,7 +126,7 @@
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace-checkbox-2" id="ace-settings-rtl" />
+                    <input type=nav-search"checkbox" class="ace-checkbox-2" id="ace-settings-rtl" />
                     <label class="lbl" for="ace-settings-rtl"> Barra lateral para esq</label>
                 </div>
             </div>
@@ -142,6 +146,22 @@
 
 <script src="{{ asset('bundles/socialnetworkindex/js/fuelux/fuelux.tree.min.js') }}"></script>
 <script src="{{ asset('bundles/socialnetworkindex/js/fuelux/data/fuelux.tree-sampledata.js') }}"></script>
+<script src="{{ asset('bundles/socialnetworkindex/js/x-editable/ace-editable.min.js') }}"></script>
+<script src="{{ asset('bundles/socialnetworkindex/js/x-editable/bootstrap-editable.min.js') }}"></script>
+
+<script>
+    $("#nav-search-field").on("keyup", function(){
+        var source = API.GET("API/searchUser/a");
+        $("#nav-search-field").typeahead().data('typeahead').source = source;
+
+    })
+
+    $("#nav-search-field").typeahead({updater:function (item) {
+        window.location = API.dataUrl+"Profile/"+item;
+    } });
+
+
+</script>
 
 </body>
 

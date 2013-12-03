@@ -1,0 +1,38 @@
+oGroup = function( container, groupId ){
+    this.groupId = groupId;
+    this.container = container;
+    this.navbar = $("div#navbar");
+
+    this.load();
+}
+
+oGroup.prototype.load = function(){
+    var self = this;
+
+    self.container.html( API.render('Group.group') );
+
+
+    self.container.find('#accordion2').on('hide', function (e) {
+        $(e.target).prev().children(0).addClass('collapsed');
+    })
+    self.container.find('#accordion2').on('hidden', function (e) {
+        $(e.target).prev().children(0).addClass('collapsed');
+    })
+    self.container.find('#accordion2').on('show', function (e) {
+        $(e.target).prev().children(0).removeClass('collapsed');
+    })
+    self.container.find('#accordion2').on('shown', function (e) {
+        $(e.target).prev().children(0).removeClass('collapsed');
+    })
+
+    $('#tree2').ace_tree({
+        dataSource: treeDataSource2 ,
+        loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+        'open-icon' : 'icon-folder-open',
+        'close-icon' : 'icon-folder-close',
+        'selectable' : false,
+        'selected-icon' : null,
+        'unselected-icon' : null
+    });
+
+}

@@ -199,9 +199,9 @@ var invites = data;
 <li class="light-blue">
     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
         <img class="nav-user-photo" src="<%= API.dataUrl %>bundles/socialnetworkindex/users/<%= API.me.data.id %>/albums/Fotos de perfil/<%= API.me.data.photoProfile %>" alt="Jason's Photo" />
-                                            <span class="user-info">
+                                            <span class="user-info ">
                                                 <small>Bem vindo,</small>
-                                                <%= API.me.data.name %>
+                                                <span class="user-name"><%= API.me.data.name %></span>
                                             </span>
 
         <i class="icon-caret-down"></i>

@@ -120,4 +120,57 @@ class ResourcesController extends Controller
         return $response->setData(array( $oUser->getId() ))->render();
     }
 
+
+    public function editUserAction()
+    {
+        $response = new ApiResponse();
+        $me = $this->getUser()->getAttributes();
+        $request = $this->getRequest()->request->all();
+        $dbService = $this->get('doctrine.orm.entity_manager');
+        $oUser = $dbService->find('SocialNetwork\API\Entity\User', $me["id"]);
+
+        if ( $request['name'] )
+        {
+            if( $request['name'] == 'name' )
+            {
+                $oUser->setName( $request['value'] );
+            } else if ( $request['name'] == 'aboutMe' )
+            {
+                $oUser->setAboutMe( $request['value'] );
+            } else if ( $request['name'] = 'age' )
+            {
+                $oUser->setAge( strtotime($request['value']) . "000" );
+            }
+
+        }
+
+        $dbService->merge( $oUser );
+        $dbService->flush();
+
+        return $response->setData($request)->render();
+    }
+
+    public function searchUserAction( $keyWord )
+    {
+        $response = new ApiResponse();
+        $dbService = $this->get('doctrine.orm.entity_manager');
+
+        $qb = $dbService->createQueryBuilder();
+        $users = $qb->select( 'u' )
+            ->from('SocialNetwork\API\Entity\User', 'u')
+            ->where('u.name LIKE ?1')
+            ->setParameter( 1, "%".$keyWord."%" )
+            ->getQuery()
+            ->getArrayResult();
+
+        $found = array();
+        foreach($users as $user) {
+
+            $found[] = $user['uid'];
+
+        }
+
+        return $response->setData($found)->render();
+    }
+
 }

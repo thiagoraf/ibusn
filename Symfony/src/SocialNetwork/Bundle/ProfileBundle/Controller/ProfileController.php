@@ -159,6 +159,7 @@ class ProfileController extends Controller
         }
     }
 
+
     public function visitorAction() {
 
         $response = new ApiResponse();
